@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h2>Iniciar Sesión</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.username.label_tag }} {{ form.username }}<br>
+    {{ form.password.label_tag }} {{ form.password }}<br>
+    {{ form.user_type }}  <!-- Mantén oculto el campo user_type -->
+    <button type="submit">Iniciar Sesión</button>
+  </form>
+{% endblock %}
