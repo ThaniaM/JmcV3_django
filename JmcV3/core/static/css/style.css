@@ -78,11 +78,33 @@ header .menu-top__link img {
 }
 .login__container {
   width: 550px;
-  margin: 0px;
+  margin: 0px 0px 0px 80px !important;
   height: auto;
+  font-size: 1.8rem;
+  text-align: center;
+}
+#btnLogin{
+  font-size: 1.2rem;
+  border-radius: 8px;
+  padding: 5px 30px;
+  border: 1px solid orange;
+  background-color: orange;
+}
+#imgEmail{
+  width: 20px;
+}
+.login__container label{
+  text-align: center;
+}
+.login__container input{
+  width: 350px;
+  border-radius: 8px;
+  border: 1px solid black;
+  padding: 5px ;
+  margin-left: 85px;
 }
 .login__container img {
-  width: 100px;
+  width: 500px;
   height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -100,6 +122,17 @@ header .menu-top__link img {
   width: 30%;
   margin-left: 190px;
 }
+.login a{
+  font-size: 1.5rem;
+  color: blue !important;
+}
+
+.login p{
+  font-size: 1.5rem !important;
+}
+.login__item {
+  margin: 20px;
+}
 .login__item img {
   width: 30px;
   height: auto;
@@ -112,7 +145,7 @@ header .menu-top__link img {
   padding-top: 5px;
 }
 .login__item label {
-  font-size: 1.8rem;
+  font-size: 1.8rem !important;
   color: #666666d9;
   line-height: 20px;
   text-align: left;

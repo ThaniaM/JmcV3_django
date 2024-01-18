@@ -1,418 +1,356 @@
-<!DOCTYPE html >
-<html> 
-  <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="initial-scale=1.0"/>
-    <title>JMC Soluciones</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Raleway:wght@100;300;400;600;800&amp;display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/tablet.css" media="screen and (min-width: 768px)"/>
-    <link rel="stylesheet" href="css/desktop.css" media="screen and (min-width: 1024px)"/>
-    <link rel="stylesheet" href="css/menu.css"/>
-    <link rel="stylesheet" href="css/animations.css"/>
-    <link rel="shortcut icon" href="images/favIcon.png"/>
-    <!-- Bootstrap y dependencias-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
-    <!-- jQuery y Bootstrap Bundle-->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <!-- DataTables-->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"/>
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <!--iconos-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-  </head>
-  <body> 
-    <header>
-      <div class="menu-top"> <a class="menu-top__link" href="login.html">Cerrar Sesión </a></div>
-      <nav class="menu"> 
-        <section class="menu__container"> <a href="inicioAdmin.html"><img class="menu__logo" src="imagenes/logo.png" alt="Logo de la empresa" id="logo"/></a>
-          <ul class="menu__links">
-            <li class="menu__item"><a class="menu__link" href="inicioAdmin.html">Inicio</a></li>
-            <li class="menu__item"><a class="menu__link" href="contratos-cliente.html">Contratos</a></li>
-            <li class="menu__item"> <a class="menu__link" href="pagos-cliente.html">Pagos</a></li>
-            <li class="menu__item"> <a class="menu__link" href="tickets-cliente.html">Tickets </a></li>
-            <li class="menu__item"><a class="menu__link" href="equipo-cliente.html">Equipos</a></li>
-          </ul>
-          <div class="menu__hamburger"><img class="menu__img" src="imagenes/menu.svg" alt="icono de menu" id="menu"/></div>
-        </section>
-      </nav>
-    </header>
-    <div class="controlMenuAdmin"> 
-      <div class="controlMenuAdmin__box">
-        <div class="controlMenuAdmin__box__item"><a href="control-clientes.html">Clientes<img src="/Images/Icons/clientes.svg" alt=""/></a></div>
-        <div class="controlMenuAdmin__box__item"> <a href="control-soporte.html">Soporte<img src="/Images/Icons/soporte.svg" alt=""/></a></div>
-        <div class="controlMenuAdmin__box__item"><a href="control-pagos.html">Pagos<img src="/Images/Icons/pagos.svg" alt=""/></a></div>
-        <div class="controlMenuAdmin__box__item"><a href="control-contratos.html">Contratos<img src="/Images/Icons/contratos.svg" alt=""/></a></div>
-        <div class="controlMenuAdmin__box__item"><a href="control-ajuste.html">Ajustes<img src="/Images/Icons/ajustes.svg" alt=""/></a></div>
+{% extends 'base_admin.html' %}
+{% load static %}
+{% block content %}
+<div class="ctrlSoporte">
+  <h3 class="title">Control tickets generales</h3>
+  <button class="btn btn-secondary newBtnElement" type="button" data-bs-toggle="modal" data-bs-target="#modalNvoTicket">Nuevo</button>
+  <div class="modal-soporte">
+    <div class="modal" id="modalNvoTicket" aria-hidden="true" aria-labelledby="modalNvoTicketLabel" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="modalNvoTicketLabel">Añadir nuevo <strong>Equipo</strong></h2>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="content-form">
+              <form action="">
+                <div class="form-floating mb-3"> 
+                  <label for="tipo">Tipo de equipo:</label>
+                  <select class="form-select" id="opcionesSelect">
+                    <option value="no"> </option>
+                    <option value="ao">All in One </option>
+                    <option value="pc">Escritorio </option>
+                    <option value="lap">Laptop </option>
+                  </select>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Marca del equipo" type="text" name="marca" maxlength="50" required="required"/>
+                  <label class="form-label" for="marca">Marca</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Memoria RAM" type="text" name="ram" maxlength="10" required="required"/>
+                  <label class="form-label" for="ram">RAM  </label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Procesador" type="text" name="procesador" maxlength="50" required="required"/>
+                  <label class="form-label" for="procesador">Procesador   </label>
+                </div>
+                <div class="form-floating mb-3">
+                  <label for="tipo">Tipo de Disco Duro:</label>
+                  <select class="form-select" id="opcionesSelect">
+                    <option value="no"> </option>
+                    <option value="hdd">HDD</option>
+                    <option value="ssd">SSD</option>
+                  </select>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Uso del disco duro" type="text" name="uso" maxlength="15"/>
+                  <label class="form-label" for="uso">Uso del disco duro</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="ip local" type="text" name="ip" maxlength="15" required="required"/>
+                  <label class="form-label" for="ip">Ip local </label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Direccion anydesk" type="text" name="anydesk" maxlength="12" required="required"/>
+                  <label class="form-label" for="anydesk">Direccion Anydesk</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Nombre de usuario" type="text" name="nom_usuario" maxlength="50" required="required"/>
+                  <label class="form-label" for="nom_usuario">Nombre de  usuario del equipo </label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Antivirus" type="text" name="nom_antivirus" maxlength="20" required="required"/>
+                  <label class="form-label" for="nom_antivirus">Nombre del antivirus </label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Vigencia del Antivirus" type="month" name="vig_antivirus" maxlength="20" required="required"/>
+                  <label class="form-label" for="vig_antivirus">Vigencia del antivirus</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Paqueteria Office" type="text" name="office" maxlength="30" required="required"/>
+                  <label class="form-label" for="office">Paqueteria Office </label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Vigencia Office" type="month" name="vig_office" maxlength="20" required="required"/>
+                  <label class="form-label" for="vig_office">Vigencia de la Paqueteria Office</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Descripcion" type="text" name="descripcion" maxlength="600"/>
+                  <label class="form-label" for="descripcion">Descripcion</label>
+                </div>
+              </form>
+            </div>
+            <div class="modal-body__buttons"> 
+              <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+              <button class="btn btn-success" data-bs-target="#modalTicket" data-bs-toggle="modal" data-bs-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="ctrlSoporte">
-      <h3 class="title">Control tickets generales</h3>
-      <button class="btn btn-secondary newBtnElement" type="button" data-bs-toggle="modal" data-bs-target="#modalNvoTicket">Nuevo</button>
-      <div class="modal-soporte">
-        <div class="modal" id="modalNvoTicket" aria-hidden="true" aria-labelledby="modalNvoTicketLabel" tabindex="-1">
-          <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 class="modal-title" id="modalNvoTicketLabel">Añadir nuevo <strong>Equipo</strong></h2>
-                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="content-form">
-                  <form action="">
-                    <div class="form-floating mb-3"> 
-                      <label for="tipo">Tipo de equipo:</label>
-                      <select class="form-select" id="opcionesSelect">
-                        <option value="no"> </option>
-                        <option value="ao">All in One </option>
-                        <option value="pc">Escritorio </option>
-                        <option value="lap">Laptop </option>
-                      </select>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Marca del equipo" type="text" name="marca" maxlength="50" required="required"/>
-                      <label class="form-label" for="marca">Marca</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Memoria RAM" type="text" name="ram" maxlength="10" required="required"/>
-                      <label class="form-label" for="ram">RAM  </label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Procesador" type="text" name="procesador" maxlength="50" required="required"/>
-                      <label class="form-label" for="procesador">Procesador   </label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <label for="tipo">Tipo de Disco Duro:</label>
-                      <select class="form-select" id="opcionesSelect">
-                        <option value="no"> </option>
-                        <option value="hdd">HDD</option>
-                        <option value="ssd">SSD</option>
-                      </select>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Uso del disco duro" type="text" name="uso" maxlength="15"/>
-                      <label class="form-label" for="uso">Uso del disco duro</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="ip local" type="text" name="ip" maxlength="15" required="required"/>
-                      <label class="form-label" for="ip">Ip local </label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Direccion anydesk" type="text" name="anydesk" maxlength="12" required="required"/>
-                      <label class="form-label" for="anydesk">Direccion Anydesk</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Nombre de usuario" type="text" name="nom_usuario" maxlength="50" required="required"/>
-                      <label class="form-label" for="nom_usuario">Nombre de  usuario del equipo </label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Antivirus" type="text" name="nom_antivirus" maxlength="20" required="required"/>
-                      <label class="form-label" for="nom_antivirus">Nombre del antivirus </label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Vigencia del Antivirus" type="month" name="vig_antivirus" maxlength="20" required="required"/>
-                      <label class="form-label" for="vig_antivirus">Vigencia del antivirus</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Paqueteria Office" type="text" name="office" maxlength="30" required="required"/>
-                      <label class="form-label" for="office">Paqueteria Office </label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Vigencia Office" type="month" name="vig_office" maxlength="20" required="required"/>
-                      <label class="form-label" for="vig_office">Vigencia de la Paqueteria Office</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Descripcion" type="text" name="descripcion" maxlength="600"/>
-                      <label class="form-label" for="descripcion">Descripcion</label>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-body__buttons"> 
-                  <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
-                  <button class="btn btn-success" data-bs-target="#modalTicket" data-bs-toggle="modal" data-bs-dismiss="modal">Guardar</button>
-                </div>
-              </div>
-            </div>
+    <div class="modal fade" id="modalTicket" aria-hidden="true" aria-labelledby="modalTicket" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalTicket">Nuevo Ticket </h3>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">Ticket creado!</div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-target="#modalTicket" data-bs-toggle="modal" data-bs-dismiss="modal">Cancelar </button>
+            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Aceptar</button>
           </div>
         </div>
-        <div class="modal fade" id="modalTicket" aria-hidden="true" aria-labelledby="modalTicket" tabindex="-1">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title" id="modalTicket">Nuevo Ticket </h3>
-                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">Ticket creado!</div>
-              <div class="modal-footer">
-                <button class="btn btn-primary" data-bs-target="#modalTicket" data-bs-toggle="modal" data-bs-dismiss="modal">Cancelar </button>
-                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Aceptar</button>
-              </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-soporte">
+    <div class="modal" id="modalModificarTicket" aria-hidden="true" aria-labelledby="modalDetalleTicketLabel" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="modalModificarTicketLabel">Modificar <strong>Ticket</strong></h2>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="content-form">
+              <form action="">
+                <div class="form-floating mb-3"> 
+                  <label for="tipo">Tipo de equipo:</label>
+                  <select class="form-select" id="opcionesSelect">
+                    <option value="no"> </option>
+                    <option value="ao">All in One </option>
+                    <option value="pc">Escritorio </option>
+                    <option value="lap">Laptop </option>
+                  </select>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Marca del equipo" type="text" name="marca" maxlength="50" required="required"/>
+                  <label class="form-label" for="marca">Marca</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Memoria RAM" type="text" name="ram" maxlength="10" required="required"/>
+                  <label class="form-label" for="ram">RAM  </label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Procesador" type="text" name="procesador" maxlength="50" required="required"/>
+                  <label class="form-label" for="procesador">Procesador   </label>
+                </div>
+                <div class="form-floating mb-3">
+                  <label for="tipo">Tipo de Disco Duro:</label>
+                  <select class="form-select" id="opcionesSelect">
+                    <option value="no"> </option>
+                    <option value="hdd">HDD</option>
+                    <option value="ssd">SSD</option>
+                  </select>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Uso del disco duro" type="text" name="uso" maxlength="15"/>
+                  <label class="form-label" for="uso">Uso del disco duro</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="ip local" type="text" name="ip" maxlength="15" required="required"/>
+                  <label class="form-label" for="ip">Ip local </label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Direccion anydesk" type="text" name="anydesk" maxlength="12" required="required"/>
+                  <label class="form-label" for="anydesk">Direccion Anydesk</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Nombre de usuario" type="text" name="nom_usuario" maxlength="50" required="required"/>
+                  <label class="form-label" for="nom_usuario">Nombre de  usuario del equipo </label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Antivirus" type="text" name="nom_antivirus" maxlength="20" required="required"/>
+                  <label class="form-label" for="nom_antivirus">Nombre del antivirus </label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Vigencia del Antivirus" type="month" name="vig_antivirus" maxlength="20" required="required"/>
+                  <label class="form-label" for="vig_antivirus">Vigencia del antivirus</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Paqueteria Office" type="text" name="office" maxlength="30" required="required"/>
+                  <label class="form-label" for="office">Paqueteria Office </label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Vigencia Office" type="month" name="vig_office" maxlength="20" required="required"/>
+                  <label class="form-label" for="vig_office">Vigencia de la Paqueteria Office</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input class="form-control form-control-lg" placeholder="Descripcion" type="text" name="descripcion" maxlength="600"/>
+                  <label class="form-label" for="descripcion">Descripcion</label>
+                </div>
+              </form>
+            </div>
+            <div class="modal-body__buttons"> 
+              <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+              <button class="btn btn-success" data-bs-target="#modalModificar" data-bs-toggle="modal" data-bs-dismiss="modal">Guardar</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="modal-soporte">
-        <div class="modal" id="modalModificarTicket" aria-hidden="true" aria-labelledby="modalDetalleTicketLabel" tabindex="-1">
-          <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 class="modal-title" id="modalModificarTicketLabel">Modificar <strong>Ticket</strong></h2>
-                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="content-form">
-                  <form action="">
-                    <div class="form-floating mb-3"> 
-                      <label for="tipo">Tipo de equipo:</label>
-                      <select class="form-select" id="opcionesSelect">
-                        <option value="no"> </option>
-                        <option value="ao">All in One </option>
-                        <option value="pc">Escritorio </option>
-                        <option value="lap">Laptop </option>
-                      </select>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Marca del equipo" type="text" name="marca" maxlength="50" required="required"/>
-                      <label class="form-label" for="marca">Marca</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Memoria RAM" type="text" name="ram" maxlength="10" required="required"/>
-                      <label class="form-label" for="ram">RAM  </label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Procesador" type="text" name="procesador" maxlength="50" required="required"/>
-                      <label class="form-label" for="procesador">Procesador   </label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <label for="tipo">Tipo de Disco Duro:</label>
-                      <select class="form-select" id="opcionesSelect">
-                        <option value="no"> </option>
-                        <option value="hdd">HDD</option>
-                        <option value="ssd">SSD</option>
-                      </select>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Uso del disco duro" type="text" name="uso" maxlength="15"/>
-                      <label class="form-label" for="uso">Uso del disco duro</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="ip local" type="text" name="ip" maxlength="15" required="required"/>
-                      <label class="form-label" for="ip">Ip local </label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Direccion anydesk" type="text" name="anydesk" maxlength="12" required="required"/>
-                      <label class="form-label" for="anydesk">Direccion Anydesk</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Nombre de usuario" type="text" name="nom_usuario" maxlength="50" required="required"/>
-                      <label class="form-label" for="nom_usuario">Nombre de  usuario del equipo </label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Antivirus" type="text" name="nom_antivirus" maxlength="20" required="required"/>
-                      <label class="form-label" for="nom_antivirus">Nombre del antivirus </label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Vigencia del Antivirus" type="month" name="vig_antivirus" maxlength="20" required="required"/>
-                      <label class="form-label" for="vig_antivirus">Vigencia del antivirus</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Paqueteria Office" type="text" name="office" maxlength="30" required="required"/>
-                      <label class="form-label" for="office">Paqueteria Office </label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Vigencia Office" type="month" name="vig_office" maxlength="20" required="required"/>
-                      <label class="form-label" for="vig_office">Vigencia de la Paqueteria Office</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input class="form-control form-control-lg" placeholder="Descripcion" type="text" name="descripcion" maxlength="600"/>
-                      <label class="form-label" for="descripcion">Descripcion</label>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-body__buttons"> 
-                  <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
-                  <button class="btn btn-success" data-bs-target="#modalModificar" data-bs-toggle="modal" data-bs-dismiss="modal">Guardar</button>
-                </div>
-              </div>
-            </div>
+    </div>
+    <div class="modal fade" id="modalModificar" aria-hidden="true" aria-labelledby="modalModificar" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalModificar">Modificar </h3>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="modal fade" id="modalModificar" aria-hidden="true" aria-labelledby="modalModificar" tabindex="-1">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title" id="modalModificar">Modificar </h3>
-                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">Ticket modificado!</div>
-              <div class="modal-footer">
-                <button class="btn btn-primary" data-bs-target="#modalModificar" data-bs-toggle="modal" data-bs-dismiss="modal">Cancelar </button>
-                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Aceptar</button>
-              </div>
-            </div>
+          <div class="modal-body">Ticket modificado!</div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-target="#modalModificar" data-bs-toggle="modal" data-bs-dismiss="modal">Cancelar </button>
+            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Aceptar</button>
           </div>
         </div>
       </div>
-      <div class="ctrlSoporte__tabs">
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="usuario-tab-pane" role="tabpanel" aria-labelledby="usuario-tab" tabindex="0"> 
-            <div class="ctrlSoporte__tabs__item">                           
-              <div class="ctrlSoporte__tabs__item__body">
-                <div class="table-wrapper content__ctrlSoporte__tabs__item__body__table">
-                  <table class="display" id="myTable" cellspacing="0" width="100%">
-                    <thead> 
-                      <tr>                 
-                        <th>id</th>
-                        <th>Cliente</th>
-                        <th>Asunto</th>
-                        <th>Status</th>
-                        <th>Detalles </th>
-                        <th>Acciones</th>
-                      </tr>
-                    </thead>
-                    <tbody> 
-                      <tr> 
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td>
-                          <button class="btn btn-link newBtnElement" type="button" data-bs-toggle="modal" data-bs-target="#modalDetalleTicket">Ver mas...</button>
-                          <div class="modal-soporte">
-                            <div class="modal" id="modalDetalleTicket" aria-hidden="true" aria-labelledby="modalDetalleTicketLabel" tabindex="-1">
-                              <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h2 class="modal-title" id="modalDetalleTicketLabel">Informacion del <strong>Ticket</strong></h2>
-                                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <div class="content-form">
-                                      <form action="">
-                                        <div class="form-floating mb-3"> 
-                                          <label for="tipo">Tipo de equipo:</label>
-                                          <select class="form-select" id="opcionesSelect">
-                                            <option value="no"> </option>
-                                            <option value="ao">All in One </option>
-                                            <option value="pc">Escritorio </option>
-                                            <option value="lap">Laptop </option>
-                                          </select>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                          <input class="form-control form-control-lg" placeholder="Marca del equipo" type="text" name="marca" maxlength="50" required="required"/>
-                                          <label class="form-label" for="marca">Marca</label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                          <input class="form-control form-control-lg" placeholder="Memoria RAM" type="text" name="ram" maxlength="10" required="required"/>
-                                          <label class="form-label" for="ram">RAM  </label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                          <input class="form-control form-control-lg" placeholder="Procesador" type="text" name="procesador" maxlength="50" required="required"/>
-                                          <label class="form-label" for="procesador">Procesador   </label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                          <label for="tipo">Tipo de Disco Duro:</label>
-                                          <select class="form-select" id="opcionesSelect">
-                                            <option value="no"> </option>
-                                            <option value="hdd">HDD</option>
-                                            <option value="ssd">SSD</option>
-                                          </select>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                          <input class="form-control form-control-lg" placeholder="Uso del disco duro" type="text" name="uso" maxlength="15"/>
-                                          <label class="form-label" for="uso">Uso del disco duro</label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                          <input class="form-control form-control-lg" placeholder="ip local" type="text" name="ip" maxlength="15" required="required"/>
-                                          <label class="form-label" for="ip">Ip local </label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                          <input class="form-control form-control-lg" placeholder="Direccion anydesk" type="text" name="anydesk" maxlength="12" required="required"/>
-                                          <label class="form-label" for="anydesk">Direccion Anydesk</label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                          <input class="form-control form-control-lg" placeholder="Nombre de usuario" type="text" name="nom_usuario" maxlength="50" required="required"/>
-                                          <label class="form-label" for="nom_usuario">Nombre de  usuario del equipo </label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                          <input class="form-control form-control-lg" placeholder="Antivirus" type="text" name="nom_antivirus" maxlength="20" required="required"/>
-                                          <label class="form-label" for="nom_antivirus">Nombre del antivirus </label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                          <input class="form-control form-control-lg" placeholder="Vigencia del Antivirus" type="month" name="vig_antivirus" maxlength="20" required="required"/>
-                                          <label class="form-label" for="vig_antivirus">Vigencia del antivirus</label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                          <input class="form-control form-control-lg" placeholder="Paqueteria Office" type="text" name="office" maxlength="30" required="required"/>
-                                          <label class="form-label" for="office">Paqueteria Office </label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                          <input class="form-control form-control-lg" placeholder="Vigencia Office" type="month" name="vig_office" maxlength="20" required="required"/>
-                                          <label class="form-label" for="vig_office">Vigencia de la Paqueteria Office</label>
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                          <input class="form-control form-control-lg" placeholder="Descripcion" type="text" name="descripcion" maxlength="600"/>
-                                          <label class="form-label" for="descripcion">Descripcion</label>
-                                        </div>
-                                      </form>
-                                    </div>
-                                    <div class="modal-body__buttons"> 
-                                      <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
-                                      <button class="btn btn-warning" data-bs-target="#modalModTick" data-bs-toggle="modal" data-bs-dismiss="modal">Modificar</button>
-                                    </div>
-                                  </div>
-                                </div>
+    </div>
+  </div>
+  <div class="ctrlSoporte__tabs">
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="usuario-tab-pane" role="tabpanel" aria-labelledby="usuario-tab" tabindex="0"> 
+        <div class="ctrlSoporte__tabs__item">                           
+          <div class="ctrlSoporte__tabs__item__body">
+            <div class="table-wrapper content__ctrlSoporte__tabs__item__body__table">
+              <table class="display" id="myTable" cellspacing="0" width="100%">
+                <thead> 
+                  <tr>                 
+                    <th>id</th>
+                    <th>Cliente</th>
+                    <th>Asunto</th>
+                    <th>Status</th>
+                    <th>Detalles </th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  <tr> 
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td>
+                      <button class="btn btn-link newBtnElement" type="button" data-bs-toggle="modal" data-bs-target="#modalDetalleTicket">Ver mas...</button>
+                      <div class="modal-soporte">
+                        <div class="modal" id="modalDetalleTicket" aria-hidden="true" aria-labelledby="modalDetalleTicketLabel" tabindex="-1">
+                          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h2 class="modal-title" id="modalDetalleTicketLabel">Informacion del <strong>Ticket</strong></h2>
+                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
-                            </div>
-                            <div class="modal fade" id="modalModTick" aria-hidden="true" aria-labelledby="modalModTick" tabindex="-1">
-                              <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h3 class="modal-title" id="modalDetalleT">Modificar </h3>
-                                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">Ticket modificado!</div>
-                                  <div class="modal-footer">
-                                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Aceptar</button>
-                                  </div>
+                              <div class="modal-body">
+                                <div class="content-form">
+                                  <form action="">
+                                    <div class="form-floating mb-3"> 
+                                      <label for="tipo">Tipo de equipo:</label>
+                                      <select class="form-select" id="opcionesSelect">
+                                        <option value="no"> </option>
+                                        <option value="ao">All in One </option>
+                                        <option value="pc">Escritorio </option>
+                                        <option value="lap">Laptop </option>
+                                      </select>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                      <input class="form-control form-control-lg" placeholder="Marca del equipo" type="text" name="marca" maxlength="50" required="required"/>
+                                      <label class="form-label" for="marca">Marca</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                      <input class="form-control form-control-lg" placeholder="Memoria RAM" type="text" name="ram" maxlength="10" required="required"/>
+                                      <label class="form-label" for="ram">RAM  </label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                      <input class="form-control form-control-lg" placeholder="Procesador" type="text" name="procesador" maxlength="50" required="required"/>
+                                      <label class="form-label" for="procesador">Procesador   </label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                      <label for="tipo">Tipo de Disco Duro:</label>
+                                      <select class="form-select" id="opcionesSelect">
+                                        <option value="no"> </option>
+                                        <option value="hdd">HDD</option>
+                                        <option value="ssd">SSD</option>
+                                      </select>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                      <input class="form-control form-control-lg" placeholder="Uso del disco duro" type="text" name="uso" maxlength="15"/>
+                                      <label class="form-label" for="uso">Uso del disco duro</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                      <input class="form-control form-control-lg" placeholder="ip local" type="text" name="ip" maxlength="15" required="required"/>
+                                      <label class="form-label" for="ip">Ip local </label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                      <input class="form-control form-control-lg" placeholder="Direccion anydesk" type="text" name="anydesk" maxlength="12" required="required"/>
+                                      <label class="form-label" for="anydesk">Direccion Anydesk</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                      <input class="form-control form-control-lg" placeholder="Nombre de usuario" type="text" name="nom_usuario" maxlength="50" required="required"/>
+                                      <label class="form-label" for="nom_usuario">Nombre de  usuario del equipo </label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                      <input class="form-control form-control-lg" placeholder="Antivirus" type="text" name="nom_antivirus" maxlength="20" required="required"/>
+                                      <label class="form-label" for="nom_antivirus">Nombre del antivirus </label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                      <input class="form-control form-control-lg" placeholder="Vigencia del Antivirus" type="month" name="vig_antivirus" maxlength="20" required="required"/>
+                                      <label class="form-label" for="vig_antivirus">Vigencia del antivirus</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                      <input class="form-control form-control-lg" placeholder="Paqueteria Office" type="text" name="office" maxlength="30" required="required"/>
+                                      <label class="form-label" for="office">Paqueteria Office </label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                      <input class="form-control form-control-lg" placeholder="Vigencia Office" type="month" name="vig_office" maxlength="20" required="required"/>
+                                      <label class="form-label" for="vig_office">Vigencia de la Paqueteria Office</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                      <input class="form-control form-control-lg" placeholder="Descripcion" type="text" name="descripcion" maxlength="600"/>
+                                      <label class="form-label" for="descripcion">Descripcion</label>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="modal-body__buttons"> 
+                                  <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                                  <button class="btn btn-warning" data-bs-target="#modalModTick" data-bs-toggle="modal" data-bs-dismiss="modal">Modificar</button>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </td>
-                        <td><a class="edit" href="#modalModificarTicket" data-bs-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a><a class="delete" href="#deleteProductoModal" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+                        </div>
+                        <div class="modal fade" id="modalModTick" aria-hidden="true" aria-labelledby="modalModTick" tabindex="-1">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h3 class="modal-title" id="modalDetalleT">Modificar </h3>
+                                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">Ticket modificado!</div>
+                              <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Aceptar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><a class="edit" href="#modalModificarTicket" data-bs-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a><a class="delete" href="#deleteProductoModal" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-        <button class="btn btn-exit" onclick="paginaInicio()" id="salir">Salir</button>
       </div>
     </div>
-    <script src="../js/inicio.js"></script>
-    <script>
-      $(document).ready( function () {
-      $('#myTable').DataTable();
-      } );
-    </script>
-    <footer> 
-      <div class="footer__box">
-        <div class="footer__box__body">
-          <h2>JMC Soluciones</h2>
-          <div class="footer__box__body__logo"> 
-            <div class="footer__box__body__logo-img"> <img src="/Images/Icons/jmc.svg" alt="LogoJMC" id="logoJMC"/></div>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <script src="../js/app.js"></script>
-  </body>
-</html>
+    <button class="btn btn-exit" onclick="paginaInicio()" id="salir">Salir</button>
+  </div>
+</div>
+<script src="../js/inicio.js"></script>
+<script>
+  $(document).ready( function () {
+  $('#myTable').DataTable();
+  } );
+</script>
+{% endblock %}

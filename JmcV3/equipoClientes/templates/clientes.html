@@ -1,0 +1,226 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% block content %}
+<div class="equipos">  
+  <h2 class="title">Equipos</h2>
+  <div class="acciones">
+    <button class="btn btn-exit" onclick="regresar()" id="salir">Regresar</button>
+  </div>
+  <div class="content__equipoClientes__tabs">
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="usuario-tab-pane" role="tabpanel" aria-labelledby="usuario-tab" tabindex="0"> 
+        <div class="content__equipoClientes__tabs__item__body">
+          <div class="table-wrapper content__equipoClientes__tabs__item__body__table">
+            <table class="display" id="myTable" cellspacing="0" width="100%">
+              <thead> 
+                <tr>                 
+                  <th>Id</th>
+                  <th>Equipo</th>
+                  <th>Usuario</th>
+                  <th>Detalles</th>
+                </tr>
+              </thead>
+              <tbody> 
+                <tr> 
+                  <td>01</td>
+                  <td>Hp</td>
+                  <td>Josue Martinez</td>
+                  <td>
+                    <button class="btn btn-link newBtnElement" type="button" data-bs-toggle="modal" data-bs-target="#modalDetalleEquipoCliente">ver mas ...</button>
+                    <div class="modal-soporte">
+                      <div class="modal" id="modalDetalleEquipoCliente" aria-hidden="true" aria-labelledby="modalDetalleEquipoClienteLabel" tabindex="-1">
+                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h2 class="modal-title" id="modalDetalleEquipoClienteLabel">Detalle <strong>Equipo</strong></h2>
+                              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="content-form">
+                                <form action="">
+                                  <div class="form-floating mb-3"> 
+                                    <label for="tipo">Tipo de equipo:</label>
+                                    <select class="form-select" id="opcionesSelect">
+                                      <option value="no"> </option>
+                                      <option value="ao">All in One </option>
+                                      <option value="pc">Escritorio </option>
+                                      <option value="lap">Laptop </option>
+                                    </select>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Marca del equipo" type="text" name="marca" maxlength="50" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="marca">Marca</label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Memoria RAM" type="text" name="ram" maxlength="10" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="ram">RAM  </label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Procesador" type="text" name="procesador" maxlength="50" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="procesador">Procesador   </label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <label for="tipo">Tipo de Disco Duro:</label>
+                                    <select class="form-select" id="opcionesSelect">
+                                      <option value="no"> </option>
+                                      <option value="hdd">HDD</option>
+                                      <option value="ssd">SSD</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Uso del disco duro" type="text" name="uso" maxlength="15" readonly="readonly"/>
+                                    <label class="form-label" for="uso">Uso del disco duro</label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="ip local" type="text" name="ip" maxlength="15" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="ip">Ip local </label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Direccion anydesk" type="text" name="anydesk" maxlength="12" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="anydesk">Direccion Anydesk</label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Nombre de usuario" type="text" name="nom_usuario" maxlength="50" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="nom_usuario">Nombre de  usuario del equipo </label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Antivirus" type="text" name="nom_antivirus" maxlength="20" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="nom_antivirus">Nombre del antivirus </label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Vigencia del Antivirus" type="month" name="vig_antivirus" maxlength="20" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="vig_antivirus">Vigencia del antivirus</label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Paqueteria Office" type="text" name="office" maxlength="30" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="office">Paqueteria Office </label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Vigencia Office" type="month" name="vig_office" maxlength="20" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="vig_office">Vigencia de la Paqueteria Office</label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Descripcion" type="text" name="descripcion" maxlength="600" readonly="readonly"/>
+                                    <label class="form-label" for="descripcion">Descripcion</label>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="modal-body__buttons"> 
+                                <button class="btn btn-success" data-bs-dismiss="modal" aria-label="Close">Aceptar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td>02</td>
+                  <td>Lenovo</td>
+                  <td>Josue Martinez</td>
+                  <td> 
+                    <button class="btn btn-link newBtnElement" type="button" data-bs-toggle="modal" data-bs-target="#modalDetalleEquipoCliente">ver mas ...</button>
+                    <div class="modal-soporte">
+                      <div class="modal" id="modalDetalleEquipoCliente" aria-hidden="true" aria-labelledby="modalDetalleEquipoClienteLabel" tabindex="-1">
+                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h2 class="modal-title" id="modalDetalleEquipoClienteLabel">Detalle <strong>Equipo</strong></h2>
+                              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="content-form">
+                                <form action="">
+                                  <div class="form-floating mb-3"> 
+                                    <label for="tipo">Tipo de equipo:</label>
+                                    <select class="form-select" id="opcionesSelect">
+                                      <option value="no"> </option>
+                                      <option value="ao">All in One </option>
+                                      <option value="pc">Escritorio </option>
+                                      <option value="lap">Laptop </option>
+                                    </select>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Marca del equipo" type="text" name="marca" maxlength="50" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="marca">Marca</label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Memoria RAM" type="text" name="ram" maxlength="10" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="ram">RAM  </label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Procesador" type="text" name="procesador" maxlength="50" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="procesador">Procesador   </label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <label for="tipo">Tipo de Disco Duro:</label>
+                                    <select class="form-select" id="opcionesSelect">
+                                      <option value="no"> </option>
+                                      <option value="hdd">HDD</option>
+                                      <option value="ssd">SSD</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Uso del disco duro" type="text" name="uso" maxlength="15" readonly="readonly"/>
+                                    <label class="form-label" for="uso">Uso del disco duro</label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="ip local" type="text" name="ip" maxlength="15" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="ip">Ip local </label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Direccion anydesk" type="text" name="anydesk" maxlength="12" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="anydesk">Direccion Anydesk</label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Nombre de usuario" type="text" name="nom_usuario" maxlength="50" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="nom_usuario">Nombre de  usuario del equipo </label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Antivirus" type="text" name="nom_antivirus" maxlength="20" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="nom_antivirus">Nombre del antivirus </label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Vigencia del Antivirus" type="month" name="vig_antivirus" maxlength="20" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="vig_antivirus">Vigencia del antivirus</label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Paqueteria Office" type="text" name="office" maxlength="30" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="office">Paqueteria Office </label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Vigencia Office" type="month" name="vig_office" maxlength="20" required="required" readonly="readonly"/>
+                                    <label class="form-label" for="vig_office">Vigencia de la Paqueteria Office</label>
+                                  </div>
+                                  <div class="form-floating mb-3">
+                                    <input class="form-control form-control-lg" placeholder="Descripcion" type="text" name="descripcion" maxlength="600" readonly="readonly"/>
+                                    <label class="form-label" for="descripcion">Descripcion</label>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="modal-body__buttons"> 
+                                <button class="btn btn-success" data-bs-dismiss="modal" aria-label="Close">Aceptar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../js/regresar.js"></script>
+  <script>
+    $(document).ready( function () {
+      $('#myTable').DataTable();
+    } );    
+  </script>
+</div>
+{% endblock %}

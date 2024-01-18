@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from login.views import CustomLoginView
+
 
 #Django settings
 from django.conf import settings
@@ -46,7 +46,9 @@ urlpatterns = [
   #sWeb
     path('sWeb/' ,include('sWeb.urls')),
   #login
-    path('login/', CustomLoginView.as_view(), name='login'),
+    path('login/',include('login.urls')),
+ #equipoClientes
+    path('equipoCliente/',include('equipoClientes.urls')),
   #admin
     path('admin/', admin.site.urls),
 

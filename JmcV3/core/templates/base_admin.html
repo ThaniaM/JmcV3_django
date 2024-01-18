@@ -29,15 +29,12 @@
   </head>
   <body> 
     <header>
-      <div class="menu-top"> <a class="menu-top__link" href="{% 'login' %}">Cerrar Sesión </a></div>
+      <div class="menu-top"> <a class="menu-top__link" href="{% url 'logout' %}">Cerrar Sesión </a></div>
       <nav class="menu"> 
-        <section class="menu__container"> <a href="{% url 'inicioAdmin' %}"><img class="menu__logo" src="{% static Images/logo.png' %}" alt="Logo de la empresa" id="logo"/></a>
+        <section class="menu__container"> <a href="{% url 'controlClientes' %}"><img class="menu__logo" src="{% static 'Images/logo.png' %}" alt="Logo de la empresa" id="logo"/></a>
           <ul class="menu__links">
-            <li class="menu__item"><a class="menu__link" href="{% url 'inicioAdmin' %}">Inicio</a></li>
-            <!-- <li class="menu__item"><a class="menu__link" href="{% url 'contratosCliente' %}">Contratos</a></li>
-            <li class="menu__item"> <a class="menu__link" href="{% url 'pagosCliente' %}">Pagos</a></li>
-            <li class="menu__item"> <a class="menu__link" href="{% url 'ticketsCliente' %}">Tickets </a></li>
-            <li class="menu__item"><a class="menu__link" href="{% url 'equipoCliente' %}">Equipos</a></li> -->
+            <li class="menu__item"><a class="menu__link" href="{% url 'controlClientes' %}">Inicio</a></li>
+            
           </ul>
           <div class="menu__hamburger"><img class="menu__img" src="{% static 'Images/menu.svg' %}" alt="icono de menu" id="menu"/></div>
         </section>

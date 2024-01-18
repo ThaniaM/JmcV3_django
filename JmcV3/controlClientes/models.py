@@ -1,8 +1,5 @@
 from django.db import models
-
-class Usuario(models.Model):
-    id_usuario = models.AutoField(primary_key=True)
-    # Agrega los campos necesarios para el modelo Usuario
+from django.contrib.auth.models import User
 
 class Cliente(models.Model):
     id_cliente = models.AutoField(primary_key=True)
@@ -16,10 +13,7 @@ class Cliente(models.Model):
     municipio = models.CharField(max_length=50, null=True, blank=True)
     estado = models.CharField(max_length=50, null=True, blank=True)
     nom_contacto = models.CharField(max_length=50)
-    id_usuario = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True, blank=True)
-class Meta:
-    managed = True
-    db_table = 'cliente'
-def __str__(self):
-    return f"{self.id_cliente} - {self.nombre}"
+    id_usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
+    def __str__(self):
+        return self.nombre

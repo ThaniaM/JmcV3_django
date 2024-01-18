@@ -1,292 +1,230 @@
-<!DOCTYPE html >
-<html> 
-  <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="initial-scale=1.0"/>
-    <title>JMC Soluciones</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Raleway:wght@100;300;400;600;800&amp;display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/tablet.css" media="screen and (min-width: 768px)"/>
-    <link rel="stylesheet" href="css/desktop.css" media="screen and (min-width: 1024px)"/>
-    <link rel="stylesheet" href="css/menu.css"/>
-    <link rel="stylesheet" href="css/animations.css"/>
-    <link rel="shortcut icon" href="images/favIcon.png"/>
-    <!-- Bootstrap y dependencias-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
-    <!-- jQuery y Bootstrap Bundle-->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <!-- DataTables-->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"/>
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <!--iconos-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-  </head>
-  <body> 
-    <header>
-      <div class="menu-top"> <a class="menu-top__link" href="login.html">Cerrar Sesión </a></div>
-      <nav class="menu"> 
-        <section class="menu__container"> <a href="inicioAdmin.html"><img class="menu__logo" src="imagenes/logo.png" alt="Logo de la empresa" id="logo"/></a>
-          <ul class="menu__links">
-            <li class="menu__item"><a class="menu__link" href="inicioAdmin.html">Inicio</a></li>
-            <li class="menu__item"><a class="menu__link" href="contratos-cliente.html">Contratos</a></li>
-            <li class="menu__item"> <a class="menu__link" href="pagos-cliente.html">Pagos</a></li>
-            <li class="menu__item"> <a class="menu__link" href="tickets-cliente.html">Tickets </a></li>
-            <li class="menu__item"><a class="menu__link" href="equipo-cliente.html">Equipos</a></li>
-          </ul>
-          <div class="menu__hamburger"><img class="menu__img" src="imagenes/menu.svg" alt="icono de menu" id="menu"/></div>
-        </section>
-      </nav>
-    </header>
-    <div class="controlMenuAdmin"> 
-      <div class="controlMenuAdmin__box">
-        <div class="controlMenuAdmin__box__item"><a href="control-clientes.html">Clientes<img src="/Images/Icons/clientes.svg" alt=""/></a></div>
-        <div class="controlMenuAdmin__box__item"> <a href="control-soporte.html">Soporte<img src="/Images/Icons/soporte.svg" alt=""/></a></div>
-        <div class="controlMenuAdmin__box__item"><a href="control-pagos.html">Pagos<img src="/Images/Icons/pagos.svg" alt=""/></a></div>
-        <div class="controlMenuAdmin__box__item"><a href="control-contratos.html">Contratos<img src="/Images/Icons/contratos.svg" alt=""/></a></div>
-        <div class="controlMenuAdmin__box__item"><a href="control-ajuste.html">Ajustes<img src="/Images/Icons/ajustes.svg" alt=""/></a></div>
+{% extends 'base_admin.html' %}
+{% load static %}
+{% block content %}
+<div class="container__controlstaff">
+  <div class="container__controlstaff__administrador">
+    <div class="container__controlstaff__administrador-wrapper">
+      <div class="modal-staff">
+        <div class="modal" id="modalModificarStaff" aria-hidden="true" aria-labelledby="modalModificarStaffLabel" tabindex="-1">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="modalModificarStaffLabel">Modificar <strong>Staff</strong></h2>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="content-form">
+                  <form action="">
+                    <div class="form-floating mb-3">
+                      <input class="form-control form-control-lg" placeholder="Nombre del staff" type="text" name="nom_staff" maxleng="80" required="required"/>
+                      <label class="form-label" for="nom_servicio">Nombre</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input class="form-control form-control-lg" placeholder="Correo electronico" type="text" name="correo" required="required"/>
+                      <label class="form-label" for="correo">Correo electronico</label>
+                    </div>
+                    <div class="form-floating mb-3"> 
+                      <label for="tipo">Departamento:</label>
+                      <select class="form-select" id="opcionesSelect">
+                        <option value="no"> </option>
+                        <option value="uno">Uno</option>
+                        <option value="dos">Dos   </option>
+                      </select>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input class="form-control form-control-lg" placeholder="Contraseña" type="text" name="Contraseña" maxlength="12" required="required"/>
+                      <label class="form-label" for="password">Contraseña </label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input class="form-control form-control-lg" placeholder=" Confirmar Contraseña" type="text" name="conf_contrasena" maxlength="12" required="required"/>
+                      <label class="form-label" for="password_confirm">Confirmar contraseña </label>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-body__buttons"> 
+                  <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                  <button class="btn btn-success" data-bs-target="#modalModificarStaffDos" data-bs-toggle="modal" data-bs-dismiss="modal">Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="modalModificarStaffDos" aria-hidden="true" aria-labelledby="modalModificarStaffDos" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="modalModificarStaffDos">Modificar Staff </h3>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">Staff modificado!</div>
+              <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Aceptar</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="container__controlstaff">
-      <div class="container__controlstaff__administrador">
-        <div class="container__controlstaff__administrador-wrapper">
-          <div class="modal-staff">
-            <div class="modal" id="modalModificarStaff" aria-hidden="true" aria-labelledby="modalModificarStaffLabel" tabindex="-1">
-              <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h2 class="modal-title" id="modalModificarStaffLabel">Modificar <strong>Staff</strong></h2>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="content-form">
-                      <form action="">
-                        <div class="form-floating mb-3">
-                          <input class="form-control form-control-lg" placeholder="Nombre del staff" type="text" name="nom_staff" maxleng="80" required="required"/>
-                          <label class="form-label" for="nom_servicio">Nombre</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                          <input class="form-control form-control-lg" placeholder="Correo electronico" type="text" name="correo" required="required"/>
-                          <label class="form-label" for="correo">Correo electronico</label>
-                        </div>
-                        <div class="form-floating mb-3"> 
-                          <label for="tipo">Departamento:</label>
-                          <select class="form-select" id="opcionesSelect">
-                            <option value="no"> </option>
-                            <option value="uno">Uno</option>
-                            <option value="dos">Dos   </option>
-                          </select>
-                        </div>
-                        <div class="form-floating mb-3">
-                          <input class="form-control form-control-lg" placeholder="Contraseña" type="text" name="Contraseña" maxlength="12" required="required"/>
-                          <label class="form-label" for="password">Contraseña </label>
-                        </div>
-                        <div class="form-floating mb-3">
-                          <input class="form-control form-control-lg" placeholder=" Confirmar Contraseña" type="text" name="conf_contrasena" maxlength="12" required="required"/>
-                          <label class="form-label" for="password_confirm">Confirmar contraseña </label>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="modal-body__buttons"> 
-                      <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
-                      <button class="btn btn-success" data-bs-target="#modalModificarStaffDos" data-bs-toggle="modal" data-bs-dismiss="modal">Guardar</button>
-                    </div>
-                  </div>
-                </div>
+      <div class="container__controlstaff__administrador__title">
+        <h1>Control de ajustes</h1>
+        <div class="container__controlstaff__administrador__title__box"><a href="control-ajuste.html">Servicios<img class="staff" src="/Images/Icons/servicio.svg" alt="ajustes de servicio"/></a></div>
+        <div class="container__controlstaff__administrador__title__box"><a href="control-staff.html">Staff<img class="staff" src="/Images/Icons/staff.svg" alt="ajustes de staff"/></a></div>
+      </div>
+      <div class="container__controlstaff__administrador__title">
+        <h2>Control de staff</h2>
+      </div>
+      <button class="btn btn-secondary newBtnElement" type="button" data-bs-toggle="modal" data-bs-target="#modalNvoStaff">Nuevo</button>
+      <div class="modal-staff">
+        <div class="modal" id="modalNvoStaff" aria-hidden="true" aria-labelledby="modalNvoStaffLabel" tabindex="-1">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="modalNvoStaffLabel">Añadir nuevo <strong>Staff</strong></h2>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-            </div>
-            <div class="modal fade" id="modalModificarStaffDos" aria-hidden="true" aria-labelledby="modalModificarStaffDos" tabindex="-1">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h3 class="modal-title" id="modalModificarStaffDos">Modificar Staff </h3>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">Staff modificado!</div>
-                  <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Aceptar</button>
-                  </div>
+              <div class="modal-body">
+                <div class="content-form">
+                  <form action="">
+                    <div class="form-floating mb-3">
+                      <input class="form-control form-control-lg" placeholder="Nombre del staff" type="text" name="nom_staff" maxleng="80" required="required"/>
+                      <label class="form-label" for="nom_servicio">Nombre</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input class="form-control form-control-lg" placeholder="Correo electronico" type="text" name="correo" required="required"/>
+                      <label class="form-label" for="correo">Correo electronico</label>
+                    </div>
+                    <div class="form-floating mb-3"> 
+                      <label for="tipo">Departamento:</label>
+                      <select class="form-select" id="opcionesSelect">
+                        <option value="no"> </option>
+                        <option value="uno">Uno</option>
+                        <option value="dos">Dos   </option>
+                      </select>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input class="form-control form-control-lg" placeholder="Contraseña" type="text" name="Contraseña" maxlength="12" required="required"/>
+                      <label class="form-label" for="password">Contraseña </label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input class="form-control form-control-lg" placeholder=" Confirmar Contraseña" type="text" name="conf_contrasena" maxlength="12" required="required"/>
+                      <label class="form-label" for="password_confirm">Confirmar contraseña </label>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-body__buttons"> 
+                  <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                  <button class="btn btn-success" data-bs-target="#modalNvoStaffDos" data-bs-toggle="modal" data-bs-dismiss="modal">Guardar</button>
                 </div>
               </div>
             </div>
           </div>
-          <div class="container__controlstaff__administrador__title">
-            <h1>Control de ajustes</h1>
-            <div class="container__controlstaff__administrador__title__box"><a href="control-ajuste.html">Servicios<img class="staff" src="/Images/Icons/servicio.svg" alt="ajustes de servicio"/></a></div>
-            <div class="container__controlstaff__administrador__title__box"><a href="control-staff.html">Staff<img class="staff" src="/Images/Icons/staff.svg" alt="ajustes de staff"/></a></div>
-          </div>
-          <div class="container__controlstaff__administrador__title">
-            <h2>Control de staff</h2>
-          </div>
-          <button class="btn btn-secondary newBtnElement" type="button" data-bs-toggle="modal" data-bs-target="#modalNvoStaff">Nuevo</button>
-          <div class="modal-staff">
-            <div class="modal" id="modalNvoStaff" aria-hidden="true" aria-labelledby="modalNvoStaffLabel" tabindex="-1">
-              <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h2 class="modal-title" id="modalNvoStaffLabel">Añadir nuevo <strong>Staff</strong></h2>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="content-form">
-                      <form action="">
-                        <div class="form-floating mb-3">
-                          <input class="form-control form-control-lg" placeholder="Nombre del staff" type="text" name="nom_staff" maxleng="80" required="required"/>
-                          <label class="form-label" for="nom_servicio">Nombre</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                          <input class="form-control form-control-lg" placeholder="Correo electronico" type="text" name="correo" required="required"/>
-                          <label class="form-label" for="correo">Correo electronico</label>
-                        </div>
-                        <div class="form-floating mb-3"> 
-                          <label for="tipo">Departamento:</label>
-                          <select class="form-select" id="opcionesSelect">
-                            <option value="no"> </option>
-                            <option value="uno">Uno</option>
-                            <option value="dos">Dos   </option>
-                          </select>
-                        </div>
-                        <div class="form-floating mb-3">
-                          <input class="form-control form-control-lg" placeholder="Contraseña" type="text" name="Contraseña" maxlength="12" required="required"/>
-                          <label class="form-label" for="password">Contraseña </label>
-                        </div>
-                        <div class="form-floating mb-3">
-                          <input class="form-control form-control-lg" placeholder=" Confirmar Contraseña" type="text" name="conf_contrasena" maxlength="12" required="required"/>
-                          <label class="form-label" for="password_confirm">Confirmar contraseña </label>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="modal-body__buttons"> 
-                      <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
-                      <button class="btn btn-success" data-bs-target="#modalNvoStaffDos" data-bs-toggle="modal" data-bs-dismiss="modal">Guardar</button>
-                    </div>
-                  </div>
-                </div>
+        </div>
+        <div class="modal fade" id="modalNvoStaffDos" aria-hidden="true" aria-labelledby="modalNvoStaffDos" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="modalNvoStaffDos">Nuevo Staff </h3>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-            </div>
-            <div class="modal fade" id="modalNvoStaffDos" aria-hidden="true" aria-labelledby="modalNvoStaffDos" tabindex="-1">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h3 class="modal-title" id="modalNvoStaffDos">Nuevo Staff </h3>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">Staff agregado!</div>
-                  <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Aceptar</button>
-                  </div>
-                </div>
+              <div class="modal-body">Staff agregado!</div>
+              <div class="modal-footer">
+                <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Aceptar</button>
               </div>
             </div>
           </div>
-          <div class="container__controlstaff__administrador__table">
-            <table class="display" id="myTable" cellspacing="0" width="100%">
-              <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Nombre</th>
-                  <th>Dirección</th>
-                  <th>Detalles</th>
-                  <th>Acción</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td>
-                    <button class="btn btn-link newBtnElement" type="button" data-bs-toggle="modal" data-bs-target="#modalDetalleStaff">ver mas ...</button>
-                    <div class="modal-staff">
-                      <div class="modal" id="modalDetalleStaff" aria-hidden="true" aria-labelledby="modalDetalleStaffLabel" tabindex="-1">
-                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h2 class="modal-title" id="modalDetalleStaffLabel">Detalle <strong>Staff</strong></h2>
-                              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              <div class="content-form">
-                                <form action="">
-                                  <div class="form-floating mb-3">
-                                    <input class="form-control form-control-lg" placeholder="Nombre del staff" type="text" name="nom_staff" maxleng="80" required="required"/>
-                                    <label class="form-label" for="nom_servicio">Nombre</label>
-                                  </div>
-                                  <div class="form-floating mb-3">
-                                    <input class="form-control form-control-lg" placeholder="Correo electronico" type="text" name="correo" required="required"/>
-                                    <label class="form-label" for="correo">Correo electronico</label>
-                                  </div>
-                                  <div class="form-floating mb-3"> 
-                                    <label for="tipo">Departamento:</label>
-                                    <select class="form-select" id="opcionesSelect">
-                                      <option value="no"> </option>
-                                      <option value="uno">Uno</option>
-                                      <option value="dos">Dos   </option>
-                                    </select>
-                                  </div>
-                                  <div class="form-floating mb-3">
-                                    <input class="form-control form-control-lg" placeholder="Contraseña" type="text" name="Contraseña" maxlength="12" required="required"/>
-                                    <label class="form-label" for="password">Contraseña </label>
-                                  </div>
-                                  <div class="form-floating mb-3">
-                                    <input class="form-control form-control-lg" placeholder=" Confirmar Contraseña" type="text" name="conf_contrasena" maxlength="12" required="required"/>
-                                    <label class="form-label" for="password_confirm">Confirmar contraseña </label>
-                                  </div>
-                                </form>
+        </div>
+      </div>
+      <div class="container__controlstaff__administrador__table">
+        <table class="display" id="myTable" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Dirección</th>
+              <th>Detalles</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td>
+                <button class="btn btn-link newBtnElement" type="button" data-bs-toggle="modal" data-bs-target="#modalDetalleStaff">ver mas ...</button>
+                <div class="modal-staff">
+                  <div class="modal" id="modalDetalleStaff" aria-hidden="true" aria-labelledby="modalDetalleStaffLabel" tabindex="-1">
+                    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h2 class="modal-title" id="modalDetalleStaffLabel">Detalle <strong>Staff</strong></h2>
+                          <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="content-form">
+                            <form action="">
+                              <div class="form-floating mb-3">
+                                <input class="form-control form-control-lg" placeholder="Nombre del staff" type="text" name="nom_staff" maxleng="80" required="required"/>
+                                <label class="form-label" for="nom_servicio">Nombre</label>
                               </div>
-                              <div class="modal-body__buttons"> 
-                                <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
-                                <button class="btn btn-warning" data-bs-target="#modalDetalleStaffDos" data-bs-toggle="modal" data-bs-dismiss="modal">Modificar</button>
+                              <div class="form-floating mb-3">
+                                <input class="form-control form-control-lg" placeholder="Correo electronico" type="text" name="correo" required="required"/>
+                                <label class="form-label" for="correo">Correo electronico</label>
                               </div>
-                            </div>
+                              <div class="form-floating mb-3"> 
+                                <label for="tipo">Departamento:</label>
+                                <select class="form-select" id="opcionesSelect">
+                                  <option value="no"> </option>
+                                  <option value="uno">Uno</option>
+                                  <option value="dos">Dos   </option>
+                                </select>
+                              </div>
+                              <div class="form-floating mb-3">
+                                <input class="form-control form-control-lg" placeholder="Contraseña" type="text" name="Contraseña" maxlength="12" required="required"/>
+                                <label class="form-label" for="password">Contraseña </label>
+                              </div>
+                              <div class="form-floating mb-3">
+                                <input class="form-control form-control-lg" placeholder=" Confirmar Contraseña" type="text" name="conf_contrasena" maxlength="12" required="required"/>
+                                <label class="form-label" for="password_confirm">Confirmar contraseña </label>
+                              </div>
+                            </form>
                           </div>
-                        </div>
-                      </div>
-                      <div class="modal fade" id="modalDetalleStaffDos" aria-hidden="true" aria-labelledby="modalDetalleStaffDos" tabindex="-1">
-                        <div class="modal-dialog modal-dialog-centered">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h3 class="modal-title" id="modalDetalleStaffDos">Modificar Staff </h3>
-                              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">Staff modificado!</div>
-                            <div class="modal-footer">
-                              <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Aceptar</button>
-                            </div>
+                          <div class="modal-body__buttons"> 
+                            <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                            <button class="btn btn-warning" data-bs-target="#modalDetalleStaffDos" data-bs-toggle="modal" data-bs-dismiss="modal">Modificar</button>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </td>
-                  <td><a class="edit" href="#modalModificarStaff" data-bs-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a><a class="delete" href="#deleteProductoModal" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <button class="botonSalir" onclick="regresar()">Regresar</button>
-        <script src="../js/regresar.js"></script>
+                  </div>
+                  <div class="modal fade" id="modalDetalleStaffDos" aria-hidden="true" aria-labelledby="modalDetalleStaffDos" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h3 class="modal-title" id="modalDetalleStaffDos">Modificar Staff </h3>
+                          <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">Staff modificado!</div>
+                        <div class="modal-footer">
+                          <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td><a class="edit" href="#modalModificarStaff" data-bs-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a><a class="delete" href="#deleteProductoModal" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <script>
-      $(document).ready( function () {
-      $('#myTable').DataTable();
-      } );
-    </script>
-    <footer> 
-      <div class="footer__box">
-        <div class="footer__box__body">
-          <h2>JMC Soluciones</h2>
-          <div class="footer__box__body__logo"> 
-            <div class="footer__box__body__logo-img"> <img src="/Images/Icons/jmc.svg" alt="LogoJMC" id="logoJMC"/></div>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <script src="../js/app.js"></script>
-  </body>
-</html>
+    <button class="botonSalir" onclick="regresar()">Regresar</button>
+    <script src="../js/regresar.js"></script>
+  </div>
+</div>
+<script>
+  $(document).ready( function () {
+  $('#myTable').DataTable();
+  } );
+</script>
+{% endblock %}
