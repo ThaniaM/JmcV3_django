@@ -13,6 +13,7 @@ body {
 footer {
   background-color: #17acc9;
   text-decoration: none;
+  bottom: 0 !important;
 }
 * {
   font-family: 'Raleway', sans-serif;
@@ -57,6 +58,20 @@ header .menu-top__link img {
   width: 25px;
   height: auto;
   top: 0;
+}
+
+.inicio__admin h1{
+  font-size: 3.6rem;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.inicio__admin h2{
+  font-size: 2.4rem;
+  display: flex;
+  justify-content: center;
+  margin: 60px;
 }
 .login {
   display: -webkit-box;
@@ -104,7 +119,7 @@ header .menu-top__link img {
   margin-left: 85px;
 }
 .login__container img {
-  width: 500px;
+  width: 100px;
   height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2595,7 +2610,7 @@ header .menu-top__link img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  bottom: 0;
+  bottom: 0 !important;
 }
 .footer__box__body {
   position: relative;
@@ -2610,7 +2625,10 @@ header .menu-top__link img {
   -ms-grid-rows: auto auto;
   grid-template-rows: auto auto;
       grid-template-areas: "contacto logo" "email  email";
-  padding: 20px;
+  /* padding: 20px; */
+  right: 0;
+  left: 0;
+  bottom: 0 !important;
 }
 .footer__box__body__contacto {
   -ms-grid-row: 1;
