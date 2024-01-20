@@ -49,6 +49,16 @@ urlpatterns = [
     path('login/',include('login.urls')),
  #equipoClientes
     path('equipoCliente/',include('equipoClientes.urls')),
+ #contratosClientes
+    path('contratosCliente/',include('contratosCliente.urls')),
+ #pagosClientes
+    path('pagosCliente/',include('pagosCliente.urls')),
+ #ticketsClientes
+    path('ticketsCliente/',include('ticketsCliente.urls')),
+ #inicioAdmin
+    path('inicioAdmin/',include('inicioAdmin.urls')),
+ #inicioAdmin
+    path('inicioCliente/',include('inicioCliente.urls')),
   #admin
     path('admin/', admin.site.urls),
 

@@ -1,0 +1,41 @@
+{% extends 'base_cliente.html' %}
+{% load static %}
+{% block content %}
+<div class="contratosCliente">
+  <h2 class="title">Contratos</h2>
+  <div class="content__contratos__tabs">
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="usuario-tab-pane" role="tabpanel" aria-labelledby="usuario-tab" tabindex="0"> 
+        <div class="content__contratos__tabs__item__body">
+          <div class="table-wrapper content__contratos__tabs__item__body__table">
+            <table class="display" id="myTable" cellspacing="0" width="100%">
+              <thead> 
+                <tr>                 
+                  <th>N°</th>
+                  <th>Servicio</th>
+                  <th>Vigencia</th>
+                  <th>status </th>
+                </tr>
+              </thead>
+              <tbody> 
+                <tr> 
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <button class="btn btn-exit" onclick="paginaInicio()" id="salir">Salir</button>
+      </div>
+    </div>
+  </div>
+  <script src="{% static '../js/inicio.js' %}"></script>
+  <script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+    } );
+  </script>
+</div>

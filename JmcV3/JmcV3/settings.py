@@ -54,6 +54,11 @@ INSTALLED_APPS = [
     'sWeb',
     'menuAspel',
     'equipoClientes',
+    'contratosCliente',
+    'inicioAdmin',
+    'inicioCliente',
+    'pagosCliente',
+    'ticketsCliente',
 ]
 
 MIDDLEWARE = [
