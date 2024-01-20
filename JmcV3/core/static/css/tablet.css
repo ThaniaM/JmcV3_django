@@ -61,7 +61,7 @@ header nav.menu .menu__links .menu__item .menu__link {
 .index .desarrollo__soluciones {
   max-width: 100%;
   margin: 20px auto;
-  background-image: url(/Images/solucionesWeb_icon\ 1.jpg);
+  background-image: url(../Images/solucionesWeb_icon\ 1.jpg);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;
@@ -259,7 +259,7 @@ header nav.menu .menu__links .menu__item .menu__link {
 .index .desarrollo__arquitectura {
   max-width: 100%;
   margin: 20px auto;
-  background-image: url(/Images/solucionesWeb_icon\ 1.jpg);
+  background-image: url(../Images/solucionesWeb_icon\ 1.jpg);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;
@@ -334,7 +334,7 @@ header nav.menu .menu__links .menu__item .menu__link {
 .index .desarrollo__dMedida {
   max-width: 100%;
   margin: 20px auto;
-  background-image: url(/Images/soluciones.svg);
+  background-image: url(../Images/soluciones.svg);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;
@@ -409,7 +409,7 @@ header nav.menu .menu__links .menu__item .menu__link {
 .index .desarrollo__online {
   max-width: 100%;
   margin: 20px auto;
-  background-image: url(/Images/soluciones.svg);
+  background-image: url(../Images/soluciones.svg);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;
@@ -481,7 +481,7 @@ header nav.menu .menu__links .menu__item .menu__link {
 .index .desarrollo__soporte {
   max-width: 100%;
   margin: 20px auto;
-  background-image: url(/Images/soluciones.svg);
+  background-image: url(../Images/soluciones.svg);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;
@@ -555,7 +555,7 @@ header nav.menu .menu__links .menu__item .menu__link {
 }
 .index .final__sAdmin {
   opacity: 0.9;
-  background-image: url(/Images/administrativo.png);
+  background-image: url(../Images/administrativo.png);
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -842,7 +842,7 @@ header nav.menu .menu__links .menu__item .menu__link {
 .empresa .inicio {
   max-width: 100%;
   margin: 0 auto;
-  background-image: url(/Images/Banner_Paradigmas.png);
+  background-image: url(../Images/Banner_Paradigmas.png);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;
@@ -911,7 +911,7 @@ header nav.menu .menu__links .menu__item .menu__link {
 .empresa .do .do__inicio {
   max-width: 100%;
   margin: 0 auto;
-  background-image: url(/Images/Banner_Paradigmas.png);
+  background-image: url(../Images/bannerRealemente.png);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;
@@ -1044,7 +1044,7 @@ header nav.menu .menu__links .menu__item .menu__link {
 .empresa .start__banner {
   max-width: 100%;
   margin: 0 auto;
-  background-image: url(/Images/Banner_Paradigmas.png);
+  background-image: url(../Images/bannercomenzamos.png);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;
@@ -2121,7 +2121,7 @@ header nav.menu .menu__links .menu__item .menu__link {
 .mantenimiento .inicio {
   margin: 0;
   padding: 0;
-  background-image: url('/Images/mantenimiento.jpg');
+  background-image: url('../Images/mantenimiento.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -2202,7 +2202,7 @@ header nav.menu .menu__links .menu__item .menu__link {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-image: url(/Images/fondo.jpg);
+  background-image: url(../Images/fondo.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -2236,7 +2236,7 @@ header nav.menu .menu__links .menu__item .menu__link {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-image: url(/Images/fondo2.jpg);
+  background-image: url(../Images/fondo2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -2269,7 +2269,7 @@ header nav.menu .menu__links .menu__item .menu__link {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-image: url(/Images/fondo.jpg);
+  background-image: url(../Images/fondo.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -2303,7 +2303,7 @@ header nav.menu .menu__links .menu__item .menu__link {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-image: url(/Images/fondo2.jpg);
+  background-image: url(../Images/fondo2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -2336,7 +2336,7 @@ header nav.menu .menu__links .menu__item .menu__link {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-image: url(/Images/fondo.jpg);
+  background-image: url(../Images/fondo.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }

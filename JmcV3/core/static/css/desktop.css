@@ -66,6 +66,68 @@ header nav.menu .menu__links .menu__item .menu__link {
   font-size: 1.8rem;
   text-align: center;
 }
+.registro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px auto;
+  padding: 60px;
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+          box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  width: 700px;
+}
+
+.registro h1 {
+  font-size: 2.8rem;
+  color: #666666d9;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 4.5rem;
+  border-bottom: 2px solid orange;
+  width: 80%;
+  margin-left: 45px;
+}
+.registro label {
+  font-size: 1.8rem;
+  color: orange;
+  line-height: 20px;
+  text-align: center;
+  font-weight: 500;
+  margin-right: 50px;
+}
+.registro input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 355px;
+  padding: 12px;
+  margin-bottom: 18px;
+  margin-left: 100px;
+  font-size: 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid #000000;
+  border-radius: 8px;
+}
+#btnRegistro{
+  font-size: 1.6rem;
+  border-radius: 8px;
+  padding: 5px 30px;
+  border: 1px solid orange;
+  background-color: orange;
+  width: 200px !important;
+  color: white;
+  margin-left: 250px;
+  margin-top: 50px;
+}
 .index {
   margin: 0 auto;
 }
@@ -967,11 +1029,12 @@ header nav.menu .menu__links .menu__item .menu__link {
 .empresa .inicio {
   max-width: 100%;
   margin: 0 auto;
-  background-image: url(/Images/Banner_Paradigmas.png);
+  background-image: url(../Images/Banner_Paradigmas.png);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   width: 1360px;
   height: 400px;
   display: -webkit-box;
@@ -1042,11 +1105,12 @@ header nav.menu .menu__links .menu__item .menu__link {
 .empresa .do .do__inicio {
   max-width: 100%;
   margin: 0 auto;
-  background-image: url(/Images/Banner_Paradigmas.png);
+  background-image: url(../Images/bannerRealemente.png);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   width: 1550px;
   height: 400px;
   display: -webkit-box;
@@ -1165,9 +1229,10 @@ header nav.menu .menu__links .menu__item .menu__link {
 .empresa .start__banner {
   max-width: 100%;
   margin: 0 auto;
-  background-image: url(/Images/Banner_Paradigmas.png);
+  background-image: url(../Images/bannercomenzamos.png);
   opacity: 0.9;
   background-position: center top;
+  background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   width: 1550px;
@@ -1506,7 +1571,7 @@ header nav.menu .menu__links .menu__item .menu__link {
 .mantenimiento .inicio {
   max-width: 100%;
   margin: 0 auto;
-  background-image: url(/Images/mantenimiento.jpg);
+  background-image: url(../Images/mantenimiento.jpg);
   width: 1920px;
   height: 466px;
   display: -webkit-box;

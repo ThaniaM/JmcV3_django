@@ -273,7 +273,7 @@ header .menu-top__link img {
 .index .desarrollo__soluciones {
   max-width: 100%;
   margin: 20px auto;
-  background-image: url(/Images/solucionesWeb_icon\ 1.jpg);
+  background-image: url(../Images/solucionesWeb_icon\ 1.jpg);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;
@@ -458,7 +458,7 @@ header .menu-top__link img {
   margin: auto;
 }
 .index .desarrollo__arquitectura {
-  background-image: url(/Images/soluciones.svg);
+  background-image: url(../Images/soluciones.svg);
   max-width: 100%;
   margin: 20px 20px;
   background-position: center top;
@@ -525,7 +525,7 @@ header .menu-top__link img {
   line-height: 20px;
 }
 .index .desarrollo__dMedida {
-  background-image: url(/Images/soluciones.svg);
+  background-image: url(../Images/soluciones.svg);
   max-width: 100%;
   margin: 20px 20px;
   background-position: center top;
@@ -595,7 +595,7 @@ header .menu-top__link img {
   margin: auto;
 }
 .index .desarrollo__online {
-  background-image: url(/Images/soluciones.svg);
+  background-image: url(../Images/soluciones.svg);
   max-width: 100%;
   margin: 20px 20px;
   background-position: center top;
@@ -661,7 +661,7 @@ header .menu-top__link img {
   margin: auto;
 }
 .index .desarrollo__soporte {
-  background-image: url(/Images/soluciones.svg);
+  background-image: url(../Images/soluciones.svg);
   max-width: 100%;
   margin: 20px 20px;
   background-position: center top;
@@ -2079,7 +2079,7 @@ header .menu-top__link img {
 .mantenimiento .inicio {
   max-width: 100%;
   margin: 0 auto;
-  background-image: url(/Images/mantenimiento.jpg);
+  background-image: url(../Images/mantenimiento.jpg);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;
@@ -2167,7 +2167,7 @@ header .menu-top__link img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-image: url(/Images/fondo.jpg);
+  background-image: url(../Images/fondo.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -2201,7 +2201,7 @@ header .menu-top__link img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-image: url(/Images/fondo2.jpg);
+  background-image: url(../Images/fondo2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -2235,7 +2235,7 @@ header .menu-top__link img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-image: url(/Images/fondo.jpg);
+  background-image: url(../Images/fondo.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -2269,7 +2269,7 @@ header .menu-top__link img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-image: url(/Images/fondo2.jpg);
+  background-image: url(../Images/fondo2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -2303,7 +2303,7 @@ header .menu-top__link img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-image: url(/Images/fondo.jpg);
+  background-image: url(../Images/fondo.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -2324,7 +2324,7 @@ header .menu-top__link img {
 .empresa .inicio {
   max-width: 100%;
   margin: 0 auto;
-  background-image: url(/Images/Banner_Paradigmas.png);
+  background-image: url(../Images/Banner_Paradigmas.png);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;
@@ -2393,7 +2393,7 @@ header .menu-top__link img {
 .empresa .do .do__inicio {
   max-width: 100%;
   margin: 0 auto;
-  background-image: url(/Images/Banner_Paradigmas.png);
+  background-image: url(../Images/bannerRealemente.png);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;
@@ -2517,7 +2517,7 @@ header .menu-top__link img {
 .empresa .start__banner {
   max-width: 100%;
   margin: 0 auto;
-  background-image: url(/Images/Banner_Paradigmas.png);
+  background-image: url(../Images/bannercomenzamos.png);
   opacity: 0.9;
   background-position: center top;
   background-size: cover;

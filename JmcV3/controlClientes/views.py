@@ -8,12 +8,18 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 def create_clientes(request):
-    # If the request method is POST, process the form data
-    return render(request, 'control-clientes.html')
+    form = ClientesForm()  # Crear una instancia del formulario
+    if request.method == 'POST':
+        form = ClientesForm(request.POST)  # Vincula el formulario con los datos POST
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Datos insertados correctamente.')
+            return redirect('controlClientes')
+        else:
+            messages.error(request, 'Error al insertar datos. Revise los datos.')
+            messages.error(request, form.errors)  # Agrega mensajes de error detallados
 
-def controlClientes(request):
-    return render(request, 'control-clientes.html')
-
+    return render(request, 'control-clientes.html', {'form': form})
 
 def save_clientes(request):
     form = ClientesForm()  # Mueve la creación del formulario fuera del bloque condicional

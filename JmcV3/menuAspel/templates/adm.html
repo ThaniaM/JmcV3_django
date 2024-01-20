@@ -2,27 +2,13 @@
 {% load static %}
 {% block content %}
 
-<div class="barraFlotante">
-  <nav>
-    <ul>
-      <li><a href="sae.html"> <img src="/Images/SAE.png" alt="Aspel SAE"/></a></li>
-      <li><a href="coi.html"> <img src="/Images/COI.png" alt="Aspel COI"/></a></li>
-      <li><a href="noi.html"> <img src="/Images/NOI.png" alt="Aspel NOI"/></a></li>
-      <li><a href="caja.html"> <img src="/Images/CAJA.png" alt="Aspel CAJA"/></a></li>
-      <li><a href="adm.html"> <img src="/Images/ADM.png" alt="Aspel ADM"/></a></li>
-      <li><a href="prod.html"> <img src="/Images/PROD.png" alt="Aspel PROD"/></a></li>
-      <li><a href="facture.html"> <img src="/Images/FACT.png" alt="Aspel FACTURE"/></a></li>
-      <li><a href="banco.html"> <img src="/Images/BANCO.png" alt="Aspel BANCO"/></a></li>
-    </ul>
-  </nav>
-</div>
 <div class="adm">
   <div class="desarrollo"> 
     <h1>Aspel ADM</h1>
     <div class="desarrollo__inicio"> 
-      <div class="desarrollo__inicio-logo"> <img src="/Images/ADM.png" alt=""/></div>
+      <div class="desarrollo__inicio-logo"> <img src="{% static '/Images/ADM.png' %}" alt=""/></div>
       <div class="desarrollo__inicio-video"> 
-        <video src="/videos/Demo Aspel ADM  Sistema de Administración Móvil_720p.mp4" controls="controls"> </video>
+        <video src="{% static '/videos/Demo Aspel ADM  Sistema de Administración Móvil_720p.mp4' %}" controls="controls"> </video>
       </div>
     </div>
     <div class="desarrollo__button">
@@ -46,7 +32,7 @@
           <h2>Sistema de Administración Móvil</h2>
           <p>Aspel ADM es la aplicación que revoluciona el <strong>control administrativo</strong> de cada una de las empresas desde la nube de una manera sencilla y poderosa. Es una nueva app en la nube que administra las principales operaciones de compra-venta de cada una de las empresas, como lo es: compras, facturas, notas de crédito, cotizaciones, recibos de honorarios y de arrendamiento, entre otras de manera sencilla, fácil, eficiente y segura.</p>
           <p>Le permitirá, también conocer el <strong>inventario de todos sus productos</strong>, la rotación de los mismos y su costo. Tendrá disponible en cualquier momento el estado de todas sus cuentas por cobrar y podrá llevar un oportuno seguimiento de sus ventas, gastos e ingresos generados.</p>
-          <p>Aspel ADM lo puede utilizar en <strong>cualquier momento</strong> desde su computadora, Tablet o dispositivo móvil. Gestionar su negocio y genere sus CFDI en el momento que los requiera.</p><img src="/Images/qr-appStore.png" alt="qr para descargar app desde la app store" id="pstore"/><img src="/Images/qr-playStore.png" alt="qr para descargar la app desde la play store" id="astore"/>
+          <p>Aspel ADM lo puede utilizar en <strong>cualquier momento</strong> desde su computadora, Tablet o dispositivo móvil. Gestionar su negocio y genere sus CFDI en el momento que los requiera.</p><img src="{% static '/Images/qr-appStore.png' %}" alt="qr para descargar app desde la app store" id="pstore"/><img src="{% static '/Images/qr-playStore.png' %}" alt="qr para descargar la app desde la play store" id="astore"/>
         </div>
         <div class="tab-pane fade" id="precios-tab-pane" role="tabpanel" aria-labelledby="precios-tab" tabindex="0">
           <h2>Suscripción</h2>
