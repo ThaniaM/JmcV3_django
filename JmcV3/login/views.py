@@ -17,11 +17,11 @@ def login_user(request):
             if user.is_staff and user.is_superuser:
                 # El usuario es miembro del grupo "Administrator"
                 print("Redireccionando a 'controlClientes' para administrador")
-                return redirect('controlClientes')
+                return redirect('inicioAdmin')
             else:
                 # El usuario no es administrador, redirigir a la página de clientes
                 print("Redireccionando a 'equipoClientes' para no administrador")
-                return redirect('equipoCliente')
+                return redirect('inicioCliente')
         else:
             # El usuario no es autenticado, mostrar un mensaje de error
             messages.error(request, 'El nombre de usuario o contraseña no son correctos.')
