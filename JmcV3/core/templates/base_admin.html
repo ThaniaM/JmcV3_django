@@ -31,9 +31,9 @@
     <header>
       <div class="menu-top"> <a class="menu-top__link" href="{% url 'logout' %}">Cerrar Sesión </a></div>
       <nav class="menu"> 
-        <section class="menu__container"> <a href="{% url 'controlClientes' %}"><img class="menu__logo" src="{% static 'Images/logo.png' %}" alt="Logo de la empresa" id="logo"/></a>
+        <section class="menu__container"> <a href="#"><img class="menu__logo" src="{% static 'Images/logo.png' %}" alt="Logo de la empresa" id="logo"/></a>
           <ul class="menu__links">
-            <li class="menu__item"><a class="menu__link" href="{% url 'controlClientes' %}">Inicio</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">Inicio</a></li>
             
           </ul>
           <div class="menu__hamburger"><img class="menu__img" src="{% static 'Images/menu.svg' %}" alt="icono de menu" id="menu"/></div>
@@ -41,7 +41,7 @@
       </nav>
       <div class="controlMenuAdmin"> 
         <div class="controlMenuAdmin__box">
-          <div class="controlMenuAdmin__box__item"><a href="{% url 'controlClientes' %}">Clientes<img src="{% static '/Images/Icons/clientes.svg' %}" alt=""/></a></div>
+          <div class="controlMenuAdmin__box__item"><a href="{% url 'listar' %}">Clientes<img src="{% static '/Images/Icons/clientes.svg' %}" alt=""/></a></div>
           <div class="controlMenuAdmin__box__item"> <a href="{% url 'controlSoporte' %}">Soporte<img src="{% static '/Images/Icons/soporte.svg' %}" alt=""/></a></div>
           <div class="controlMenuAdmin__box__item"><a href="{% url 'controlPagos' %}">Pagos<img src="{% static '/Images/Icons/pagos.svg' %}" alt=""/></a></div>
           <div class="controlMenuAdmin__box__item"><a href="{% url 'controlContratos' %}">Contratos<img src="{% static '/Images/Icons/contratos.svg' %}" alt=""/></a></div>

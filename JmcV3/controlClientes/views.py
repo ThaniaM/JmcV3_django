@@ -1,5 +1,6 @@
+#view 
 from django.shortcuts import render
-from .forms import ClientesForm
+from .forms import ClienteForm
 from django.contrib import messages
 from .models import Cliente
 from django.shortcuts import render, get_object_or_404, redirect
@@ -7,77 +8,58 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 
-def create_clientes(request):
-    form = ClientesForm()  # Crear una instancia del formulario
+def create_cliente(request):
     if request.method == 'POST':
-        form = ClientesForm(request.POST)  # Vincula el formulario con los datos POST
+        form = ClienteForm(request.POST)  # Vincula el formulario con los datos POST
         if form.is_valid():
+            cliente = form.save(commit=False)
+            cliente.id_usuario_id = request.user.id
             form.save()
-            messages.success(request, 'Datos insertados correctamente.')
-            return redirect('controlClientes')
+            messages.success(request, 'Cliente creado con exito.')
+            return redirect('listar')
         else:
             messages.error(request, 'Error al insertar datos. Revise los datos.')
             messages.error(request, form.errors)  # Agrega mensajes de error detallados
-
-    return render(request, 'control-clientes.html', {'form': form})
-
-def save_clientes(request):
-    form = ClientesForm()  # Mueve la creación del formulario fuera del bloque condicional
-
-    if request.method == 'POST':
-            form = ClientesForm(request.POST)  # Crea el formulario con los datos del POST
-            if form.is_valid():
-                form.save()
-                messages.success(request, 'Datos insertados correctamente.')
-                return redirect('save')
-            else:
-                messages.error(request, 'Error al insertar datos. Revise los datos.')
-                messages.error(request, form.errors)  # Agrega este mensaje de error para obtener más detalles
-
-    return render(request, 'control-clientes.html', {'form': form})
-
- 
-def contact(request):
-    if request.method == 'POST':
-            form = ClientesForm(request.POST)
-            if form.is_valid():
-                # Procesa los datos del formulario
-                # ...
-                messages.success(request, 'Formulario enviado con éxito.')
-            else:
-                # Muestra un mensaje de error del formulario
-                messages.error(request, 'Error en el formulario. Revise los datos.')
-                messages.error(request, form.errors)  # Mensajes detallados de error
     else:
-        # Muestra el formulario inicial
-        form = ClientesForm()
-    return render(request, 'control_clientes', {'form': form})
-def listar_clientes(request):
+        form = ClienteForm()  # Crea un objeto vacío 
+    return render(request, 'control-clientes.html', {'form': form})
+
+def listar_cliente(request):
     clientes = Cliente.objects.all()
     return render (request, "control-clientes.html", {"clientes":clientes})
-def update_clientes(request, id_cliente):
+
+def update_cliente(request, id_cliente):
     cliente = get_object_or_404(cliente, id_cliente=id_cliente)
-    data = {
-        'nombre':cliente.nombre,
-        'telefono': cliente.telefono,
-        'correo': cliente.correo,
-        'municipio': cliente.municipio,
-        'estado': cliente.estado,
-        'nom_contacto': cliente.nom_contacto,
-        'rfc':cliente.rfc,
-        'rf':cliente.rf,
-        'cp':cliente.cp,
-        'direccion':cliente.direccion,
-    }
-    print(data)
-    return JsonResponse(data)
+    if request.method == 'POST':
+        form = ClienteForm(request.POST, instance=cliente)
+        if form.is_valid():
+            form.save()
+            data = {'message': 'Datos actualizados correctamente'}
+            return redirect('listar')
+        else:
+            data = {'error': 'Error al actualizar datos. Revise los datos.'}
+            return JsonResponse(data)
+    else:
+        data = {
+            'nombre':cliente.nombre,
+            'telefono': cliente.telefono,
+            'correo': cliente.correo,
+            'municipio': cliente.municipio,
+            'estado': cliente.estado,
+            'nom_contacto': cliente.nom_contacto,
+            'rfc':cliente.rfc,
+            'cp':cliente.cp,
+            'direccion':cliente.direccion,
+        }
+        
+        return JsonResponse(data)
 @csrf_exempt
-def delete_clientes(request, id_cliente):
+def delete_cliente(request, id_cliente):
     if request.method == 'POST':
         try:
-            cotizacion = get_object_or_404(Cliente, id_cliente=id_cliente)
-            cotizacion.delete()
-            return JsonResponse({'message': 'Cliente eliminad correctamente'})
+            cliente = get_object_or_404(Cliente, id_cliente=id_cliente)
+            cliente.delete()
+            return JsonResponse({'message': 'Cliente eliminado correctamente'})
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=500)
     else:
