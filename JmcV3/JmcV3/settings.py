@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'controlSoporte',
     'controlPagos',
     'controlContratos',
-    'controlClientes',
+    'controlCliente',
     'controlAjuste', 
     'login',
     'empresa',

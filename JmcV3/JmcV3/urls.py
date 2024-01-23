@@ -33,8 +33,8 @@ urlpatterns = [
     path('controlPagos/',include('controlPagos.urls')),
   #ControlContratos
     path('controlContratos/',include('controlContratos.urls')),
-  #ControlClientes
-    path('controlClientes/',include('controlClientes.urls')),
+  #ControlCliente
+    path('controlCliente/',include('controlCliente.urls')),
   #ControlAjuste
     path('controlAjuste/',include('controlAjuste.urls')),
   #Menu Aspel

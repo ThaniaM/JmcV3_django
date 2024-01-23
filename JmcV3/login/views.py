@@ -16,7 +16,7 @@ def login_user(request):
             login(request, user)
             if user.is_staff and user.is_superuser:
                 # El usuario es miembro del grupo "Administrator"
-                print("Redireccionando a 'controlClientes' para administrador")
+                print("Redireccionando a 'controlCliente' para administrador")
                 return redirect('inicioAdmin')
             else:
                 # El usuario no es administrador, redirigir a la página de clientes

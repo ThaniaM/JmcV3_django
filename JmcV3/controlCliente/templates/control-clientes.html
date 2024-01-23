@@ -7,7 +7,7 @@
   <!--------------------MODAL NUEVO CLIENTE----------------------->
 
   <button class="btn btn-secondary newBtnElement" type="button" data-bs-toggle="modal"
-    data-bs-target="#modalNvoCliente">Nuevo</button>
+    data-bs-target="#modalNvoCliente">Nuevo</button><br><br>
   <div class="modal-nuevo-cliente">
     <div class="modal" id="modalNvoCliente" aria-hidden="true" aria-labelledby="modalNvoCliente-gralLabel"
       tabindex="-1">
@@ -24,7 +24,6 @@
             <div class="content-form">
               <form method="POST" action="{%url 'create' %}" >
                 {% csrf_token %}
-
                 <div class="form-floating mb-3">
                   <input class="form-control form-control-lg" placeholder="Nombre" type="text" name="nombre"
                     maxlength="80"   id="nombre" />
@@ -72,7 +71,6 @@
                     maxlength="12"   id="password" />
                   <label class="form-label" for="password"  >Contraseña</label>
                 </div>
-
             </div>
             <div class="modal-body__buttons">
               <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>

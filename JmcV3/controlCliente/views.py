@@ -12,8 +12,8 @@ def create_cliente(request):
     if request.method == 'POST':
         form = ClienteForm(request.POST)  # Vincula el formulario con los datos POST
         if form.is_valid():
-            cliente = form.save(commit=False)
-            cliente.id_usuario_id = request.user.id
+           
+            
             form.save()
             messages.success(request, 'Cliente creado con exito.')
             return redirect('listar')
@@ -42,8 +42,8 @@ def update_cliente(request, id_cliente):
     else:
         data = {
             'nombre':cliente.nombre,
-            'telefono': cliente.telefono,
             'correo': cliente.correo,
+            'telefono': cliente.telefono,
             'municipio': cliente.municipio,
             'estado': cliente.estado,
             'nom_contacto': cliente.nom_contacto,
