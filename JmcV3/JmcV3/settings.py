@@ -28,6 +28,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#backends personalizados
+AUTHENTICATION_BACKENDS = [
+  'JmcV3.backends.MiBackendPersonalizado', 
+  'django.contrib.auth.backends.ModelBackend'
+]
+
 
 # Application definition
 

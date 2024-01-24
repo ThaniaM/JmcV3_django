@@ -1,8 +1,6 @@
 #urls
 from django.urls import path
-from django.contrib.auth.decorators import login_required
-from login.views import login_user 
-
+from django.contrib.auth.decorators import login_required #que sea necesario iniciar sesion
 
 from . import views
 urlpatterns = [
