@@ -32,7 +32,7 @@ urlpatterns = [
   #ControlPagos
     path('controlPagos/',include('controlPagos.urls')),
   #ControlContratos
-    path('controlContratos/',include('controlContratos.urls')),
+    path('control_Contratos/',include('control_Contratos.urls')),
   #ControlCliente
     path('controlCliente/',include('controlCliente.urls')),
   #ControlAjuste

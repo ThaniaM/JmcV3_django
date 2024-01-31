@@ -1,10 +1,17 @@
+#urls
 from django.urls import path
+from django.contrib.auth.decorators import login_required #que sea necesario iniciar sesion
 
-#vistas
 from . import views
-
-#configurar url
-#despues del views. es el nombre que se pone en la funcion en el archivo vistas
 urlpatterns = [
-  path('', views.controlStaff, name='controlStaff'),
-]
+    path('create_staff',views.create_staff, name='create_staff'),
+    path('listar_staff', login_required (views.listar_staff), name='listar_staff'),
+    path('editar_staff/<int:id_staff>', login_required (views.update_staff), name='editar_staff'),
+    path('eliminar/<int:id_staff>', views.delete_staff, name='eliminar_staff'),
+] 
+
+
+
+
+
+

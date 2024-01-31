@@ -24,7 +24,22 @@ SECRET_KEY = 'django-insecure-g1z(zj8zki$1bcw82b!^wg3y2_d!y%$(d9x$*!m-=307)nf#i=
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-#DEBUG = False
+""" LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}  """
 
 ALLOWED_HOSTS = []
 
@@ -52,7 +67,7 @@ INSTALLED_APPS = [
     'controlStaff',
     'controlSoporte',
     'controlPagos',
-    'controlContratos',
+    'control_Contratos',
     'controlCliente',
     'controlAjuste', 
     'login',

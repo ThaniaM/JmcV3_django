@@ -7,9 +7,9 @@
     <div class="container__controlajuste__administrador-wrapper">
       <div class="container__controlajuste__administrador__title">
         <h1>Control de ajustes</h1>
-        <div class="container__controlajuste__administrador__title__box"><a href="control-ajuste.html">Servicios<img
+        <div class="container__controlajuste__administrador__title__box"><a href="{% url 'listar_servicio' %}">Servicios<img
               class="staff" src="{% static '/Images/Icons/servicio.svg' %}" alt="ajustes de servicio" /></a></div>
-        <div class="container__controlajuste__administrador__title__box"><a href="control-staff.html">Staff<img
+        <div class="container__controlajuste__administrador__title__box"><a href="{% url 'listar_staff' %}">Staff<img
               class="staff" src="{% static '/Images/Icons/staff.svg' %}" alt="ajustes de staff" /></a></div>
       </div>
       <div class="container__controlajuste__administrador__title">
@@ -129,23 +129,23 @@
                           {% csrf_token %}
                           <div class="form-floating mb-3">
                             <input class="form-control form-control-lg" placeholder="Nombre del servicio" type="text"
-                              name="nombre_servicio" id="nombre_servicio" />
-                            <label class="form-label" for="nombre_servicio">Nombre del servicio</label>
+                              name="nombre_servicio" id="nombre_servicio2" />
+                            <label class="form-label" for="nombre_servicio2">Nombre del servicio</label>
                           </div>
                           <div class="form-floating mb-3">
                             <input class="form-control form-control-lg" placeholder="Descripcion" type="text"
-                              name="descripcion" maxlength="600" id="descripcion" />
-                            <label class="form-label" for="descripcion">Descripcion</label>
+                              name="descripcion" maxlength="600" id="descripcion2" />
+                            <label class="form-label" for="descripcion2">Descripcion</label>
                           </div>
                           <div class="form-floating mb-3">
                             <input class="form-control form-control-lg" placeholder="Costo servicio" type="text"
-                              name="costo" required="required" />
-                            <label class="form-label" for="costo">Costo del servicio</label>
+                              name="costo" id="costo2" />
+                            <label class="form-label" for="costo2">Costo del servicio</label>
                           </div>
                           <div class="form-floating mb-3">
                             <input class="form-control form-control-lg" placeholder="Plan" type="text" name="plan"
-                              maxlength="20" id="plan" />
-                            <label for="plan">Plan</label>
+                              maxlength="20" id="plan2" />
+                            <label for="plan2">Plan</label>
                           </div>
                       </div>
 
@@ -215,6 +215,9 @@
                     $('#editarServicioForm').attr('action', '{% url "editar_servicio" id_servicio=0 %}'.replace('0',
                       id_servicio));
                     $('#nombre_servicio2').val(data.nombre_servicio);
+                    $('#descripcion2').val(data.descripcion);
+                    $('#costo2').val(data.costo);
+                    $('#plan2').val(data.plan);
                   },
                   error: function (xhr, status, error) {
                     console.error('Error al cargar la información del registro:', error);

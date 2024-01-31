@@ -1,25 +1,36 @@
 from django.shortcuts import render #funciones de django
 from .forms import ClienteForm #traer el formulario de cliente de la app
 from django.contrib import messages#se utiliza para mostrar mensajes
-from .models import Cliente #importa el modelo de cliente de la app
+from .models import Servicio,Cliente #importa el modelo de cliente de la app
 from django.shortcuts import render, get_object_or_404, redirect  #indica que va a recuperar un argumento y va a devolver un httpresponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.hashers import make_password
 
 
 def create_cliente(request):
     if request.method == 'POST':
-        form = ClienteForm(request.POST)  # Vincula el formulario con los datos POST
+        form = ClienteForm(request.POST)
         if form.is_valid():
-            form.save() # Guarda los datos en la base de datos
-            messages.success(request, 'Cliente creado con exito.') # Muestra un mensaje de éxito
-            return redirect('listar') # Redirige a la página de listado de los clientes
+             # Obtener la contraseña del formulario
+            password = form.cleaned_data.get('password')
+
+            # Cifrar la contraseña
+            hashed_password = make_password(password)
+
+            # Crear una instancia del formulario con la contraseña cifrada
+            form.instance.password = hashed_password
+            form.save()
+            messages.success(request, 'Cliente creado con éxito.')
+            return redirect('listar')
         else:
-            messages.error(request, 'Error al insertar datos. Revise los datos.')
-            messages.error(request, form.errors)  # Agrega mensajes de error detallados
+            errors = {field: form.errors[field][0] for field in form.errors}
+            messages.error(request, 'Error al crear el cliente: {}'.format(errors))
+            return redirect('listar')
     else:
-        form = ClienteForm()  # Crea un objeto vacío 
-    return render(request, 'control-clientes.html', {'form': form})# Renderiza la plantilla HTML con el formulario
+        form = ClienteForm()
+    return render(request, 'control-clientes.html', {'form': form}) 
+
 
 #funcion para mostrar la lista de los clientes
 def listar_cliente(request): #hacemos la solicitud al servidor con la funcion request
@@ -41,14 +52,15 @@ def update_cliente(request, id_cliente): #obtener los datos del cliente mediante
     else:
         data = {
             'nombre':cliente.nombre,
-            #'correo': cliente.correo,
-            #'direccion':cliente.direccion,
-            #'telefono': cliente.telefono,
-            #'rfc':cliente.rfc,
-            #'cp':cliente.cp,
-            #'municipio': cliente.municipio,
-            #'estado': cliente.estado,
-            #'nom_contacto': cliente.nom_contacto,
+            'correo': cliente.correo,
+            'direccion':cliente.direccion,
+            'telefono': cliente.telefono,
+            'rfc':cliente.rfc,
+            'cp':cliente.cp,
+            'estado': cliente.estado,
+            'nom_contacto': cliente.nom_contacto,
+            'password': cliente.password,
+            'id_servicio': cliente.id_servicio.id_servicio,
         }
         
         return JsonResponse(data)#toma los datos almacenado y los envia  a donde se ralizo la solicitud
@@ -65,3 +77,15 @@ def delete_cliente(request, id_cliente):
     else:
         return JsonResponse({'error': 'Método no permitido'}, status=403)
 #get_object_or_404 devueove un objeto o genra una excepcion
+    
+def handle_ajax_error(request):
+    if request.method == 'POST':
+        campo = request.POST.get('campo', '')
+        error = request.POST.get('error', '')
+
+        # Aquí puedes realizar cualquier lógica adicional según tus necesidades
+        # Puedes registrar los errores, realizar otras acciones, etc.
+
+        return JsonResponse({'success': False, 'campo': campo, 'error': error})
+
+    return JsonResponse({'success': False, 'error': 'Método no permitido'}, status=405) 

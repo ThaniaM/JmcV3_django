@@ -1,7 +1,12 @@
-
-#models.py
 from django.db import models
-from django.contrib.auth.models import User
+
+class Servicio(models.Model):
+    id_servicio = models.AutoField(primary_key=True)
+    nombre_servicio = models.CharField(max_length=80)
+
+    class Meta:
+        managed = True
+        db_table = 'servicio'
 
 class Cliente(models.Model):
     id_cliente = models.AutoField(primary_key=True)
@@ -13,6 +18,9 @@ class Cliente(models.Model):
     cp = models.CharField(max_length=5)
     estado = models.CharField(max_length=50, null=True, blank=True)
     nom_contacto = models.CharField(max_length=50)
+    password = models.CharField(max_length=15)
+    id_servicio = models.ForeignKey(Servicio, on_delete= models.CASCADE)
 
-    def __str__(self):
+    class Meta:
         managed = True
+        db_table = 'cliente'

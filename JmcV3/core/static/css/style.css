@@ -34,6 +34,7 @@ footer {
   background-color: #17acc9;
   text-decoration: none;
   bottom: 0 !important;
+  position: relative;
 }
 * {
   font-family: 'Raleway', sans-serif;
@@ -79,7 +80,9 @@ header .menu-top__link img {
   height: auto;
   top: 0;
 }
-
+.inicio__admin{
+  height: 320px;
+}
 .inicio__admin h1{
   font-size: 3.6rem;
   display: flex;
