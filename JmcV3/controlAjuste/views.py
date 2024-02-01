@@ -12,7 +12,7 @@ def uno(request):
     # Obtener todos los productos relacionados con las subcategorías
     contratos = Contrato.objects.filter(id_cliente__in=clientes)
     
-    return render(request, 'cat-semaforos.html', {'servicio': servicio, 'clientes': clientes, 'contratos': contratos})
+    return render(request, 'control-ajuste.html', {'servicio': servicio, 'clientes': clientes, 'contratos': contratos})
 
 def dos(request):
      # Obtener la categoría con id_categoria=1
@@ -21,25 +21,25 @@ def dos(request):
     # Obtener las subcategorías asociadas a la categoría
     clientes = Cliente.objects.filter(id_servicio=servicio)
 
-    return render(request, 'cat-postes.html', {'servicio': servicio, 'clientes': clientes})
+    return render(request, 'control-ajuste.html', {'servicio': servicio, 'clientes': clientes})
 def tres(request):
     # Obtener la categoría con id_categoria=1
     servicio = Servicio.objects.get(id_servicio=3)
 
     # Obtener las subcategorías asociadas a la categoría
     clientes = Cliente.objects.filter(id_servicio=servicio)
-    return render(request, 'cat-senalamientos.html', {'servicio': servicio, 'clientes': clientes})
+    return render(request, 'control-ajuste.html', {'servicio': servicio, 'clientes': clientes})
 def cuatro(request):
     # Obtener la categoría con id_categoria=1
     servicio = Servicio.objects.get(id_servicio=4)
 
     # Obtener las subcategorías asociadas a la categoría
     clientes = Cliente.objects.filter(id_servicio=servicio)
-    return render(request, 'cat-complementos.html', {'servicio': servicio, 'clientes': clientes})
+    return render(request, 'control-ajuste.html', {'servicio': servicio, 'clientes': clientes})
 def cinco(request):
     # Obtener la categoría con id_categoria=1
     servicio = Servicio.objects.get(id_servicio=5)
 
     # Obtener las subcategorías asociadas a la categoría
     clientes = Cliente.objects.filter(id_servicio=servicio)
-    return render(request, 'cat-servicios.html', {'servicio': servicio, 'clientes': clientes})
+    return render(request, 'control-ajuste.html', {'servicio': servicio, 'clientes': clientes})

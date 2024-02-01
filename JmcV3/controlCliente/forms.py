@@ -1,7 +1,7 @@
 #forms
 from django import forms
 from django.forms import ModelForm
-from .models import Servicio,Cliente
+from .models import Cliente,Servicio
 
 
 class ClienteForm(forms.ModelForm):

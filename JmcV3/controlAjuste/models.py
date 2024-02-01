@@ -1,3 +1,2 @@
-from django.db import models
-from controlCliente.models import Cliente, Servicio
+from controlCliente.models import Servicio, Cliente
 from control_Contratos.models import Contrato

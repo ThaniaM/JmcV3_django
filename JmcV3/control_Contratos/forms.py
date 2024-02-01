@@ -1,7 +1,6 @@
 from django import forms
 from .models import Contrato
-from controlCliente.models import Cliente
-from controlAjuste.models import Servicio
+from controlCliente.models import Servicio,Cliente
 
 class ContratoForm(forms.ModelForm):
 

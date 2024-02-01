@@ -10,13 +10,12 @@ from controlCliente .models import Cliente
 def create_Contrato(request):
     if request.method == 'POST':
         form = ContratoForm(request.POST)
+        
         if form.is_valid():
             contrato_instance = form.save(commit=False)
             
             # Asignar las llaves foráneas desde el formulario
             contrato_instance.id_servicio = form.cleaned_data['id_servicio']
-           # producto_instance.id_subcategoria = form.cleaned_data['id_subcategoria']
-
                 
             contrato_instance.save()
             
@@ -32,6 +31,7 @@ def create_Contrato(request):
     return render(request, 'control-contratos.html', {'form': form})
 def listar_Contrato(request):
     contratos = Contrato.objects.all()
+    
     return render(request, 'control-contratos.html', {'contratos': contratos})
 
 def update_Contrato(request, id_contrato):
@@ -62,6 +62,7 @@ def update_Contrato(request, id_contrato):
             'vigencia_contrato': contrato.vigencia_contrato,
             'id_servicio': contrato.id_servicio_id,
             'id_cliente': contrato.id_cliente_id,
+
         }
 
         return JsonResponse(data)
@@ -82,7 +83,7 @@ def obtener_clientes(request):
         
         if id_servicio is not None:
             clientes = Cliente.objects.filter(id_servicio_id=id_servicio)
-            data = [{'id': cli.id_cliente, 'nombre': cli.nombre} for cli in clientes]
+            data = [{'id': sub.id_cliente, 'nombre': sub.nombre} for sub in clientes]
             # Cambiado el nombre del campo de 'id_subcategoria_id' a 'id_subcategoria'
         else:
             data = []

@@ -1,7 +1,7 @@
 from django.shortcuts import render #funciones de django
+from .models import Servicio,Cliente #importa el modelo de cliente de la app
 from .forms import ClienteForm #traer el formulario de cliente de la app
 from django.contrib import messages#se utiliza para mostrar mensajes
-from .models import Servicio,Cliente #importa el modelo de cliente de la app
 from django.shortcuts import render, get_object_or_404, redirect  #indica que va a recuperar un argumento y va a devolver un httpresponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt

@@ -16,7 +16,7 @@
           </div>
           <div class="modal-body">
             <div class="content-form">
-              <form method="POST" action="{%url 'create_contrato' %}">
+              <form method="POST" action="{%url 'create_contrato' %}"  enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-floating mb-3">
                   <input class="form-control form-control-lg" placeholder="Fecha de contrato" type="date"
@@ -28,13 +28,7 @@
                     name="vigencia_contrato" required id="vigencia_contrato" />
                   <label class="form-label" for="vigencia_contrato">vigencia del contrato </label>
                 </div>
-                <div class="form-group mb-3">
-                  <label class="form-label" for="nombreCliente">Cliente</label>
-                  <select class="form-control form-control-lg form-select" name="id_cliente"
-                    aria-describedby="emailHelp" placeholder="" id="nombreCliente">
-                    <!-- Las opciones se llenarán dinámicamente con JavaScript -->
-                  </select>
-                </div>
+
                 <div class="form-group mb-3">
                   <label class="form-label" for="nombreServicio">Servicio</label>
                   <select class="form-control form-control-lg form-select" name="id_servicio" aria-describedby="emailHelp" placeholder="" id="nombreServicio">
@@ -45,7 +39,13 @@
                       <option value="5">Servicio Cinco</option>
                   </select>
               </div>
-
+                <div class="form-group mb-3">
+                  <label class="form-label" for="nombreCliente">Cliente</label>
+                  <select class="form-control form-control-lg form-select" name="id_cliente"
+                    aria-describedby="emailHelp" placeholder="" id="nombreCliente">
+                    <!-- Las opciones se llenarán dinámicamente con JavaScript -->
+                  </select>
+                </div>
                 {% if messages %}
                 <div class="row">
                   {% for message in messages %}
@@ -91,23 +91,24 @@
           <div class="table-wrapper content__contratos__tabs__item__body__table">
             <table class="display" id="myTable" cellspacing="0" width="100%">
               <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Fecha</th>
-                  <th>Vigencia</th>
-                  <th>Cliente</th>
-                  <th>Servicio</th>
-                  <th>Detalles </th>
-                  <th>Acción</th>
-                </tr>
+                <tr></tr>
+                <th>Id</th>
+                <th>Fecha</th>
+                <th>Vigencia</th>
+                <th>Servicio</th>
+                <th>Cliente</th>
+                <th>Detalles </th>
+                <th>Acción</th>
+              
               </thead>
               <tbody>
                 {% for contrato in contratos %}
                 <tr id="fila_id_{{ contrato.id_contrato }}">
+                  <td>{{ contrato.id_contrato}}</td>
                   <td>{{ contrato.fecha_contrato }}</td>
                   <td>{{ contrato.vigencia_contrato }}</td>
-                  <td>{{ contrato.id_cliente.nombre }}</td>
                   <td>{{ contrato.id_servicio.nombre_servicio }}</td>
+                  <td>{{ contrato.id_cliente.nombre }}</td>
                   <td>
                     <a href="{% url 'editar_contrato' contrato.id_contrato %}" data-id="{{ contrato.id_contrato }}"
                       data-bs-toggle="modal" data-bs-target="#modalEditar" title="Modificar">
@@ -146,22 +147,22 @@
                                 <label class="form-label" for="vigencia_contrato2">vigencia del contrato </label>
                               </div>
                               <div class="form-group mb-3">
+                                <label class="form-label" for="nombreServicio2">Servicio</label>
+                                <select class="form-control form-control-lg form-select" name="id_servicio" aria-describedby="emailHelp" placeholder="" id="nombreServicio2">
+                                  <option value="1">Servicio Uno</option>
+                                  <option value="2">Servicio Dos</option>
+                                  <option value="3">Servicio Tres</option>
+                                  <option value="4">Servicio Cuatro</option>
+                                  <option value="5">Servicio Cinco</option>
+                                </select>
+                              </div>
+                              <div class="form-group mb-3">
                                 <label class="form-label" for="nombreCliente2">Cliente</label>
                                 <select class="form-control form-control-lg form-select" name="id_cliente"
                                   aria-describedby="emailHelp" placeholder="" id="nombreCliente2">
                                   <!-- Las opciones se llenarán dinámicamente con JavaScript -->
                                 </select>
                               </div>
-                              <div class="form-group mb-3">
-                                <label class="form-label" for="nombreServicio2">Servicio</label>
-                                <select class="form-control form-control-lg form-select" name="id_servicio" aria-describedby="emailHelp" placeholder="" id="nombreServicio2">
-                                    <option value="1">Servicio Uno</option>
-                                    <option value="2">Servicio Dos</option>
-                                    <option value="3">Servicio Tres</option>
-                                    <option value="4">Servicio Cuatro</option>
-                                    <option value="5">Servicio Cinco</option>
-                                </select>
-                            </div>
                               <!----espacio para mostrar los mensajes-->
                               {% if messages %}
                               <div class="row">
@@ -229,8 +230,8 @@
                             '{% url "editar_contrato" id_contrato=0 %}'.replace('0', id_contrato));
                           $('#fecha_contrato2').val(data.fecha_contrato);
                           $('#vigencia_contrato2').val(data.vigencia_contrato);
-                          $('#nombreCliente2').val(data.id_cliente);
                           $('#nombreServicio2').val(data.id_servicio);
+                          $('#nombreCliente2').val(data.id_cliente);
                           // Llenar subcategorías al abrir el modal de edición
                           var idServicio = $('#nombreServicio2').val();
                           var selectClientes = $('#nombreCliente2');
@@ -293,11 +294,9 @@
                   // Función para llenar el select de subcategorías
                   function llenarClientes(idServicio, selectClientes) {
                     $.ajax({
-                      url: 'http://127.0.0.1:8000/control_Contratos/obtener_clientes/',
+                      url: '/control_Contratos/obtener_clientes/',
                       type: 'GET',
-                      data: {
-                        'id_servicio_id': idServicio
-                      },
+                      data: {'id_servicio': idServicio },
                       success: function (data) {
                         // console.log('Subcategorías cargadas:', data);
 
@@ -335,7 +334,7 @@
                   $('#nombreServicio').change(function () {
                     var idServicio = $(this).val();
                     var selectClientes = $('#nombreCliente');
-                    llenarSubcategorias(idServicio, selectClientes);
+                    llenarClientes(idServicio, selectClientes);
                   });
                 });
               </script>
