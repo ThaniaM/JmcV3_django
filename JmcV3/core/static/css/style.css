@@ -2844,6 +2844,7 @@ header .menu-top__link img {
   transition: 0.4s;
 }
 .content__CtrlClientes {
+
   max-width: 1110px;
   margin: 5px auto;
   padding: 20px;
@@ -2857,7 +2858,7 @@ header .menu-top__link img {
 }
 .content__CtrlClientes__tabs__item__body {
   margin: 20px 0;
-  overflow: auto;
+
 }
 .content__CtrlClientes__tabs__item .btn-dark {
   margin: 3px;
@@ -2888,6 +2889,9 @@ header .menu-top__link img {
 .content__CtrlClientes__tabs__item__header h3 {
   font-size: 1.4rem;
   color: black;
+}
+.content__CtrlClientes__tabs__item__body__table{
+  overflow: auto;
 }
 .content__CtrlClientes__tabs__item__body__table a {
   color: gray !important;
