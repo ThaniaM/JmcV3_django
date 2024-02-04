@@ -66,7 +66,7 @@ INSTALLED_APPS = [
     'core',
     'controlStaff',
     'controlSoporte',
-    'controlPagos',
+    'control_Pagos',
     'control_Contratos',
     'controlCliente',
     'controlAjuste', 
@@ -183,6 +183,6 @@ MESSAGE_TAGS = {message_constants.DEBUG: 'debug',
                 message_constants.WARNING: 'warning',
                 message_constants.ERROR: 'danger',}
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
+    'JmcV3.backends.ClienteBackend',
 ]
 LOGIN_URL = 'login'  # Ajusta esto según la URL de tu página de inicio de sesión

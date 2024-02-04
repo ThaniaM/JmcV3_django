@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ControlpagosConfig(AppConfig):
+class ControlPagosConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'controlPagos'
+    name = 'control_Pagos'

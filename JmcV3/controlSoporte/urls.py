@@ -10,4 +10,5 @@ urlpatterns = [
     path('listar_equipo', login_required (views.listar_equipo), name='listar_equipo'),
     path('editar_equipo/<int:id_equipo>', login_required (views.update_equipo), name='editar_equipo'),
     path('eliminar/<int:id_equipo>', views.delete_equipo, name='eliminar_equipo'),
+    path('obtener_clientes/', views.obtener_clientes, name='obtener_clientes'),
 ]

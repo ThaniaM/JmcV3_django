@@ -29,8 +29,8 @@ urlpatterns = [
     path('controlStaff/',include('controlStaff.urls')),
   #ControlSoporte
     path('controlSoporte/',include('controlSoporte.urls')),
-  #ControlPagos
-    path('controlPagos/',include('controlPagos.urls')),
+  #Control_Pagos
+    path('control_Pagos/',include('control_Pagos.urls')),
   #ControlContratos
     path('control_Contratos/',include('control_Contratos.urls')),
   #ControlCliente

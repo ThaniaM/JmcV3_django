@@ -1,4 +1,5 @@
 from django.db import models
+from controlCliente.models import Servicio,Cliente
 
 
 class  Equipo(models.Model):
@@ -17,7 +18,11 @@ class  Equipo(models.Model):
   office = models.CharField(max_length=30)
   vig_office = models.DateField()
   descripcion = models.TextField(max_length=600, blank=True, null=True)
-  
+  id_servicio = models.ForeignKey(Servicio, on_delete=models.CASCADE, null=True)
+  id_cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True)
+  def save(self, *args, **kwargs):
+      super(Equipo, self).save(*args, **kwargs)
+
   
   class Meta:
     managed = True

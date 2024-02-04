@@ -19,6 +19,9 @@ class Cliente(models.Model):
     estado = models.CharField(max_length=50, null=True, blank=True)
     nom_contacto = models.CharField(max_length=50)
     password = models.CharField(max_length=15)
+    last_login = models.DateTimeField(null=True, blank=True)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
     id_servicio = models.ForeignKey(Servicio, on_delete= models.CASCADE)
 
     class Meta:

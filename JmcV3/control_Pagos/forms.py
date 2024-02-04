@@ -1,16 +1,18 @@
 from django import forms
-from django.forms import ModelForm
-from .models import Equipo
-from controlCliente.models import Servicio,Cliente
+from .models import Pago
+from controlCliente .models import Servicio, Cliente
 
-class EquipoForm(forms.ModelForm):
+class PagoForm(forms.ModelForm):
+
     id_servicio = forms.ModelChoiceField(queryset=Servicio.objects.all(), empty_label=None)
     id_cliente = forms.ModelChoiceField(queryset=Cliente.objects.all(), empty_label=None)
 
     class Meta:
-        model = Equipo
+        model = Pago
         fields =  '__all__'
-    
+       
+
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
